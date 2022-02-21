@@ -155,9 +155,9 @@ StatusMember = LuaTele.getChatMember(ChatId,UserId).status.luatele
 if UserId == 1001132193 then
 Status = 'DEV • BARLO'
 elseif UserId == 5049221213 then
-Status = 'DEV • Neyork'
+Status = 'المبرمج غزال'
 elseif UserId == 1925760763 then
-Status = 'مبرمْجـۦـه ٱݪسۧۄرسۧ👰'
+Status = 'المبرمج سوريا'
 elseif UserId == Sudo_Id then  
 Status = 'المطور الاساسي'
 elseif UserId == TheMEZO then
@@ -2279,7 +2279,7 @@ if not msg.ControllerBot then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*◍ هاذا الامر يخص { '..Controller_Num(1)..' }* ',"md",true)  
 end
 --os.execute('rm -rf MEZO.lua')
---download('https://raw.githubusercontent.com/Neyork/MEZO/MEZO.lua','MEZO.lua')
+--download('https://github.com/Haeszm/new/MEZO.lua','MEZO.lua')
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*تم ♻️ •《تحديث السورس》• ♻️ * ',"md",true)  
 end
 if text == '𖡶 تعطيل المغادره 𖡶' or text == 'تعطيل المغادره' then
@@ -4377,6 +4377,219 @@ Redis:set(TheMEZO.."MEZO:TwaslBot",true)
 return LuaTele.sendText(msg_chat_id,msg_id,"◍ تم 📍تفعيل التواصل📍 داخل البوت ","md",true)
 end
 
+end
+
+if text == "زواج" or text == "رفع زوجتي" or text == "رفع زوجي" and msg.reply_to_message_id ~= 0 then
+local Message_Reply = LuaTele.getMessage(msg.chat_id, msg.reply_to_message_id)
+local UserInfo = LuaTele.getUser(Message_Reply.sender.user_id)
+if tonumber(Message_Reply.sender.user_id) == tonumber(msg.sender.user_id) then
+return LuaTele.sendText(msg_chat_id,msg_id,"*الحق الود تعبان عوز يتجوز نفسه 😂*","md",true)  
+end
+if tonumber(Message_Reply.sender.user_id) == tonumber(MEZO) then
+return LuaTele.sendText(msg_chat_id,msg_id,"*شوفلك كلبه غير البوت يبنوسخه 😒*","md",true)  
+end
+if Redis:sismember(MEZO..msg_chat_id.."zwgat:",Message_Reply.sender.user_id) then
+local rd_mtzwga = {
+"الا تصلح انت تكون متجوزه 😹",
+"المزه متجوزه مسبقا 😒",
+"عذرا لا تصلح للجواز 😢💔",
+"انها متناكه من قبل عزيزي 😅??",
+"شوفلك كلبه غير دي 😒😂",
+}
+return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(Message_Reply.sender.user_id,rd_mtzwga[math.random(#rd_mtzwga)]).Reply,"md",true)  
+else
+local rd_zwag = {
+"تم الزواج مبروك 💑🎊",
+"تم الزواج الف مبروك 🎉🎀",
+"زواجنا مبروكة والحمد لله 🙊💗",
+"تم الزواج من المزه الجامده 💋💞",
+"تم الزواج امتاا الدخله 😅😂",
+}
+if Redis:sismember(MEZO..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id) then 
+Redis:srem(MEZO..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id)
+end
+Redis:sadd(MEZO..msg_chat_id.."zwgat:",Message_Reply.sender.user_id) 
+return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(Message_Reply.sender.user_id,rd_zwag[math.random(#rd_zwag)]).Reply,"md",true)  
+end
+end
+if text == "طلاق" or text == "تنزيل زوجتي" or text == "تزيل زوجي" and msg.reply_to_message_id ~= 0 then
+local Message_Reply = LuaTele.getMessage(msg.chat_id, msg.reply_to_message_id)
+local UserInfo = LuaTele.getUser(Message_Reply.sender.user_id)
+if tonumber(Message_Reply.sender.user_id) == tonumber(msg.sender.user_id) then
+return LuaTele.sendText(msg_chat_id,msg_id,"احا هو انت كنت اتجوزت نفسك عشان تطلق","md",true)  
+end
+if tonumber(Message_Reply.sender.user_id) == tonumber(MEZO) then
+return LuaTele.sendText(msg_chat_id,msg_id,"هو احنا كنا اتجوزنا يروح خالتك عشان نطلق","md",true)  
+end
+if Redis:sismember(MEZO..msg_chat_id.."zwgat:",Message_Reply.sender.user_id) then
+Redis:srem(MEZO..msg_chat_id.."zwgat:",Message_Reply.sender.user_id)
+Redis:sadd(MEZO..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id) 
+local rd_tmtlaq = {
+"تم الطلاق وخربان البيت 😂",
+"تم الطلاق وده الشطان 😹",
+"تم الطلاق بنجاح 😅😂",
+}
+return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(Message_Reply.sender.user_id,rd_tmtlaq[math.random(#rd_tmtlaq)]).Reply,"md",true)  
+else
+local rd_tlaq = {
+"لم يتم الجواز من قبل 😹",
+"بايره محدش اتجوزها 😅😂",
+"لم يتم التكاثر من المزه 😂",
+}
+return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(Message_Reply.sender.user_id,rd_tlaq[math.random(#rd_tlaq)]).Reply,"md",true)  
+end
+end
+if text == "رفع متوحد" or text == "متوحد" and msg.reply_to_message_id ~= 0 then
+local Message_Reply = LuaTele.getMessage(msg.chat_id, msg.reply_to_message_id)
+local UserInfo = LuaTele.getUser(Message_Reply.sender.user_id)
+if tonumber(Message_Reply.sender.user_id) == tonumber(MEZO) then
+return LuaTele.sendText(msg_chat_id,msg_id,"*لا استطيع استخدام الأمر علي البوت ❍┃ *","md",true)  
+end
+if Redis:sismember(MEZO..msg_chat_id.."lonely:",Message_Reply.sender.user_id) then
+local rd_mtzwga = {"تم رفعه متوحد مسبقا 😂",
+}
+return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(Message_Reply.sender.user_id,rd_mtzwga[math.random(#rd_mtzwga)]).Reply,"md",true)  
+else
+local rd_zwag = {"تم رفعه متوحد في الجروب 😂",
+}
+if Redis:sismember(MEZO..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id) then 
+Redis:srem(MEZO..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id)
+end
+Redis:sadd(MEZO..msg_chat_id.."lonely:",Message_Reply.sender.user_id) 
+return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(Message_Reply.sender.user_id,rd_zwag[math.random(#rd_zwag)]).Reply,"md",true)  
+end
+end
+if text == "تنزيل متوحد" or text == "تنزل المتوحد" and msg.reply_to_message_id ~= 0 then
+local Message_Reply = LuaTele.getMessage(msg.chat_id, msg.reply_to_message_id)
+local UserInfo = LuaTele.getUser(Message_Reply.sender.user_id)
+if tonumber(Message_Reply.sender.user_id) == tonumber(MEZO) then
+return LuaTele.sendText(msg_chat_id,msg_id,"*لا استطيع استخدام الأمر علي البوت ❍┃ *","md",true)  
+end
+if Redis:sismember(MEZO..msg_chat_id.."lonely:",Message_Reply.sender.user_id) then
+Redis:srem(MEZO..msg_chat_id.."lonely:",Message_Reply.sender.user_id)
+Redis:sadd(MEZO..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id) 
+local rd_tlaq = {"😂 تم تنزيله متوحد",
+}
+return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(Message_Reply.sender.user_id,rd_tmtlaq[math.random(#rd_tmtlaq)]).Reply,"md",true)  
+else
+local rd_tmtlaq = {"😂 تم تنزيله متوحد مسبقا",
+}
+return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(Message_Reply.sender.user_id,rd_tlaq[math.random(#rd_tlaq)]).Reply,"md",true)  
+end
+end
+if text == "رفع كلب" or text == "كلب" and msg.reply_to_message_id ~= 0 then
+local Message_Reply = LuaTele.getMessage(msg.chat_id, msg.reply_to_message_id)
+local UserInfo = LuaTele.getUser(Message_Reply.sender.user_id)
+if tonumber(Message_Reply.sender.user_id) == tonumber(MEZO) then
+return LuaTele.sendText(msg_chat_id,msg_id,"*لا استطيع استخدام الأمر علي البوت ❍┃ *","md",true)  
+end
+if Redis:sismember(MEZO..msg_chat_id.."klbklb:",Message_Reply.sender.user_id) then
+local rd_mtzwga = {"تم رفعه كلب مسبقا 😂",
+}
+return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(Message_Reply.sender.user_id,rd_mtzwga[math.random(#rd_mtzwga)]).Reply,"md",true)  
+else
+local rd_zwag = {"تم رفعه كلب في الجروب 😂",
+}
+if Redis:sismember(MEZO..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id) then 
+Redis:srem(MEZO..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id)
+end
+Redis:sadd(MEZO..msg_chat_id.."klbklb:",Message_Reply.sender.user_id) 
+return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(Message_Reply.sender.user_id,rd_zwag[math.random(#rd_zwag)]).Reply,"md",true)  
+end
+end
+if text == "تنزيل كلب" or text == "تنزل الكلب" and msg.reply_to_message_id ~= 0 then
+local Message_Reply = LuaTele.getMessage(msg.chat_id, msg.reply_to_message_id)
+local UserInfo = LuaTele.getUser(Message_Reply.sender.user_id)
+if tonumber(Message_Reply.sender.user_id) == tonumber(MEZO) then
+return LuaTele.sendText(msg_chat_id,msg_id,"*لا استطيع استخدام الأمر علي البوت ❍┃ *","md",true)  
+end
+if Redis:sismember(MEZO..msg_chat_id.."klbklb:",Message_Reply.sender.user_id) then
+Redis:srem(MEZO..msg_chat_id.."klbklb:",Message_Reply.sender.user_id)
+Redis:sadd(MEZO..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id) 
+local rd_tlaq = {"😂 تم تنزيله كلب",
+}
+return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(Message_Reply.sender.user_id,rd_tmtlaq[math.random(#rd_tmtlaq)]).Reply,"md",true)  
+else
+local rd_tmtlaq = {"😂 تم تنزيله كلب مسبقا",
+}
+return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(Message_Reply.sender.user_id,rd_tlaq[math.random(#rd_tlaq)]).Reply,"md",true)  
+end
+end
+if text == "تخ" or text == "تخخ" and msg.reply_to_message_id ~= 0 then
+local Message_Reply = LuaTele.getMessage(msg.chat_id, msg.reply_to_message_id)
+local UserInfo = LuaTele.getUser(Message_Reply.sender.user_id)
+if tonumber(Message_Reply.sender.user_id) == tonumber(msg.sender.user_id) then
+return LuaTele.sendText(msg_chat_id,msg_id,"*الحق الود تعبان عايز يموت نفسه 😂*","md",true)  
+end
+if tonumber(Message_Reply.sender.user_id) == tonumber(MEZO) then
+return LuaTele.sendText(msg_chat_id,msg_id,"*شوفلك حد غير البوت يبنوسخه 😒*","md",true)  
+end
+if Redis:sismember(MEZO..msg_chat_id.."zwgat:",Message_Reply.sender.user_id) then
+local rd_mtzwga = {
+"مااااتتتت خلااااصصصص😹💔 ",
+"ده اتدفن يعم شوف حد تاني نقتلو🥲",
+"هو دهه في روحح عشان نقتلو اصلا😹💔",
+"ربنا يرحمو كان طيب🥲",
+}
+return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(Message_Reply.sender.user_id,rd_mtzwga[math.random(#rd_mtzwga)]).Reply,"md",true)  
+else
+local rd_zwag = {
+"تم القتل بنجاح😈",
+"تم القتل بنجاح😈",
+}
+if Redis:sismember(MEZO..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id) then 
+Redis:srem(MEZO..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id)
+end
+Redis:sadd(MEZO..msg_chat_id.."zwgat:",Message_Reply.sender.user_id) 
+return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(Message_Reply.sender.user_id,rd_zwag[math.random(#rd_zwag)]).Reply,"md",true)  
+end
+end
+-- time & date
+if text == "الوقت" then
+local date = os.date('*t')
+local time = os.date("*t")
+local hour = time.hour
+local min = time.min
+local sec = time.sec
+return LuaTele.sendText(msg_chat_id,msg_id,"التاريخ : "..os.date("%A, %d %B %Y").."\nالساعه : "..os.date("%I:%M:%S %p"),"md",true)
+end
+if text == "تتجوزيني"  then
+local Message_Reply = LuaTele.getMessage(msg.chat_id, msg.reply_to_message_id)
+local ban = LuaTele.getUser(Message_Reply.sender.user_id)
+local bain = LuaTele.getUser(msg.sender.user_id)
+if ban.first_name then
+baniusername = '*طلب :- *['..bain.first_name..'](tg://user?id='..bain.id..')*\nالزواج من  :- *['..ban.first_name..'](tg://user?id='..ban.id..')*\nهل العروسه موافقه علي هذا\n*'
+else
+baniusername = 'لا يوجد'
+end
+local reply_markup = LuaTele.replyMarkup{
+type = 'inline',
+data = {
+{
+{text = 'موافقه 👰', data = Message_Reply.sender.user_id..'/zog1'},{text = 'مش موافقه😩', data = Message_Reply.sender.user_id..'/zog2'}, 
+},
+}
+}
+return LuaTele.sendText(msg_chat_id,msg_id,baniusername,"md",false, false, false, false, reply_markup)
+end
+
+if Text and Text:match('(%d+)/zog1') then
+local UserId = Text:match('(%d+)/zog1')
+if tonumber(IdUser) == tonumber(UserId) then
+local bain = LuaTele.getUser(IdUser)
+if bain.first_name then
+baniusername = '*تم الزواج بنجاح \nمبروك يا  :- *['..bain.first_name..'](tg://user?id='..bain.id..')*\n*'
+else
+baniusername = 'لا يوجد'
+end
+LuaTele.editMessageText(ChatId,Msg_id,baniusername, 'md', true, false, reply_markup)
+end
+end
+if Text and Text:match('(%d+)/zog2') then
+local UserId = Text:match('(%d+)/zog2')
+if tonumber(IdUser) == tonumber(UserId) then
+LuaTele.editMessageText(ChatId,Msg_id,"*𖥔 تم رفض الزواج من الزوجه*","md",true) 
+end
 end
 
 if text and text:match("^(.*)$") then
@@ -9531,15 +9744,18 @@ end
 end
 end
 
-if text == 'اصاله' or text == 'صولا' then
-photo = "https://t.me/G8AZZAL/34"
+if text == 'سوريا' or text == 'المبرمج سوريا' then
+photo = "https://t.me/O_U_C/6"
 local T =[[
-[رۄحـۦـ قݪب غـۦـغزٱݪ ۄ بٱݪکكۄن ـ؏ـندِهه🔥❤️🙈]
+[𝚙𝚛𝚘𝚐𝚛𝚊𝚖𝚖𝚎𝚛 𝚜𝚒𝚛𝚒𝚊 ⛓️
+𝑝𝑟𝑜𝑔𝑟𝑎𝑚𝑚𝑒𝑟 𝑎𝘯𝑑 𝑑𝑒𝑣𝑒𝑙𝑜𝑝𝑒𝑟 𝑓𝑜𝑟 𝑠𝑜𝑢𝑟𝑐𝑒 𝑡ℎ𝑜𝑟 𖤣
+ᵗᵒ ᶜᵒᶰᵗᵃᶜᵗ ᵖˡᵉᵃˢᵉ ᶜˡᶤᶜᵏ ᵗʰᵉ ᵇᵘᵗᵗᵒᶰ ᵇᵉˡᵒʷ 𝆮
+]
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = '‹ 𝐌𝐄𝐑𝐀𝐓 𝐆8𝐀𝐙𝐀𝐋👰🦌 ›', url = "https://t.me/MERAT_G8AZAL"}
+{text = '‹ ٰ𝘼ٰٰ𝙃ِ𝙈ٌٓ𝙀ٰٰ𝘿ِِ 𝙎ٍَ𝙄ِ𝖱ٍ𝙄ٰ𝘼  ›', url = "https://t.me/Y_U_A_R"}
 },
 }
 local msgg = msg_id/2097152/0.5
@@ -9581,17 +9797,17 @@ local msgg = msg_id/2097152/0.5
 https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id=" .. msg_chat_id .. "&photo="..photo.."&caption=".. URL.escape(T).."&reply_to_message_id="..msgg.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
 
-if text == 'نيورك' or text == 'Neyork' then
-photo = "https://t.me/swry00/45"
+if text == 'حازم' or text == 'غزال' then
+photo = "https://t.me/O_U_C/7"
 local T =[[
-[ᴘʀᴏɢʀᴀᴍᴍᴇʀ Neyork 𖡼
+[ᴘʀᴏɢʀᴀᴍᴍᴇʀ ٰGٰٓaٓzٰaٌِl 🦇 𖡼
 ᴛᴏ ᴄᴏᴍᴍụɴɪᴄᴀᴛᴇ ᴛᴏɢᴇᴛʜᴇʀ 𖡼
 ғᴏʟʟᴏᴡ ᴛʜᴇ ʙụᴛᴛᴏɴѕ ʟᴏᴡᴇʀ 𖡼]
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = '‹ᗪEᐯ ᑎEYOᖇK›', url = "https://t.me/QDevQ"}
+{text = '‹ٰDِٰAٰDِ Gٰٓaٓzٰaٌِl ', url = "https://t.me/G8AZAAL"}
 },
 {
 {text = '𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱', url = "https://t.me/GB_THOR"}
@@ -9617,7 +9833,6 @@ local T =[[
 ◍ لعبة السمايلات » سمايلات
 ◍اذكار» ذكر
 ◍ مجوهراتي ← لعرض عدد الارباح
-[┄─━━  ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ━━─┄](t.me/GB_THOR)
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
@@ -9713,30 +9928,29 @@ return LuaTele.sendText(msg_chat_id,msg_id, [[*
 🔻╎ اختار الاوامر الي انت عايزها • ~
 🔺️╎ من خلال الأزرار بالأسفل 👇 • ~
 
-[●━•◉•⟞⟦ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 ℻ ⟧⟝•◉•━●](t.me/GB_THOR)
 *]],"md",false, false, false, false, reply_markup)
 end
 
 if text == 'السورس' or text == 'سورس' or text == 'يا سورس' or text == 'source' then
-video = "https://t.me/swry00/49"
+video = "https://t.me/O_U_C/5"
 local T =[[
 ┌─────────────────────┐
-├➤   [W𝗲𝗹𝗰𝗼𝗺𝗲 𝘁𝗼 𝘀𝗼𝘂𝗿𝗰𝗲 𝗽𝗿𝗮𝗱 𝗶𝘀𝗲 ☬](t.me/GB_THOR)
+├➤   [ٓ𝗪ٌِ𝗘ٌِ𝗟ٰ𝗖𝗢ِٰ𝗠ٌٓ𝗘 𝗧ِ𝗢ٰ 𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱 𝆮 ☊](t.me/GB_THOR)
 ├➤   [𝙩𝙝𝙚 𝙗𝙚𝙨𝙩 𝙨𝙤𝙪𝙧𝙘𝙚 𝙤𝙣 𝙚𝙜𝙮𝙥𝙩 ★](t.me/GB_THOR)
 ├➤   [𝙧𝙪𝙣 𝙮𝙤𝙪𝙧 𝙗𝙤𝙩 W𝙞𝙩𝙝 𝙪𝙨 𝙣𝙤W ℘](t.me/GB_THOR)
-├➤   [߷  𝘾𝙃 𝙋𝙧𝙖𝙙𝙞𝙨𝙚 𝙎𝙤𝙪𝙧𝙘𝙚 ᪣](t.me/GB_THOR)
+├➤   [ٰ𝘾ٰ𝙃 𝙎َ𝙊ٰ𝙐ِِ𝖱ٰ𝘾ٌ𝙀 𝙏ِٰٰ𝙃𝙊ِٰ𝖱](t.me/GB_THOR)
 ├─────────────────────┤
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = '• ¹𝘋𝘌𝘝 •', url = "https://t.me/QDevQ"},{text = '• ²𝘋𝘌𝘝 •', url = "https://t.me/bar_lo0o0"}
+{text = 'ٰ𝘼ٰٰ𝙃ِ𝙈ٌٓ𝙀ٰٰ𝘿ِِ 𝙎ٍَ𝙄ِ𝖱ٍ𝙄ٰ𝘼', url = "https://t.me/Y_U_A_R"},{text = '• ²ٓ𝘽ٰ𝘼ِ𝖱ٌِ𝙇𝙊ٰ •', url = "https://t.me/bar_lo0o0"}
 },
 {
-{text = 'ঌ 𝚗𝚎𝚢𝚘𝚛𝚔 • ʙᴏᴛ ঌ', url = "https://t.me/Source1bot"},{text = 'ঌ ʙᴀʀʟᴏ • ʙᴏᴛ ঌ', url = "https://t.me/barlo0o_bot"}
+{text = 'ٰ𝘿ِٰ𝘼ٰ𝘿ِ 𝙂ٰٓ𝘼ٓ𝙕ٰ𝘼ٌِ𝙇 🦇 𝆮', url = "https://t.me/G8AZAAL"},{text = 'ঌ ʙᴀʀʟᴏ • ʙᴏᴛ ঌ', url = "https://t.me/barlo0o_bot"}
 },
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = "https://t.me/GB_THOR"}
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = "https://t.me/GB_THOR"}
 },
 {
 {text = '𖡶 • أضف البوت إلي مجموعتك • 𖡶', url = 't.me/'..UserBot..'?startgroup=new'},
@@ -9869,7 +10083,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -9883,7 +10097,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -9897,7 +10111,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -9911,7 +10125,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -9925,7 +10139,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -9939,7 +10153,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -9953,7 +10167,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋??𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -9967,7 +10181,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -9981,7 +10195,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -9995,7 +10209,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10009,7 +10223,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10023,7 +10237,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10037,7 +10251,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10051,7 +10265,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10065,7 +10279,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10079,7 +10293,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈??𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10093,7 +10307,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10107,7 +10321,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10121,7 +10335,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10135,7 +10349,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10149,7 +10363,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10163,7 +10377,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10177,7 +10391,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10191,7 +10405,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10205,7 +10419,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10219,7 +10433,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10233,7 +10447,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10247,7 +10461,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10261,7 +10475,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10275,7 +10489,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10289,7 +10503,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10303,7 +10517,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10317,7 +10531,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10331,7 +10545,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '◍S𝘰𝘶??𝘤𝘦 N𝘦𝘺𝘰𝘳𝘬 🖤𖤣', url = 't.me/GB_THOR'}, 
+{text = '◍𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱𖤣', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10345,7 +10559,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10359,7 +10573,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10373,7 +10587,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10387,7 +10601,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10401,7 +10615,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10415,7 +10629,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10429,11 +10643,11 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
-return LuaTele.sendText(msg_chat_id,msg_id,'*فرح خالتك قريب 😹💋💃🏻*',"md",false, false, false, false, reply_markup)
+return LuaTele.sendText(msg_chat_id,msg_id,'*فرح خالتك قريب 😹💋💃??*',"md",false, false, false, false, reply_markup)
 end
 if text == 'حاضر' or text == 'حتر' then
 if not Redis:get(TheMEZO.."MEZO:Sasa:Jeka"..msg_chat_id) then
@@ -10443,7 +10657,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10457,7 +10671,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10471,7 +10685,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10485,7 +10699,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10499,7 +10713,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10513,7 +10727,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10527,7 +10741,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
