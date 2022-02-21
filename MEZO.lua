@@ -4385,10 +4385,10 @@ local UserInfo = LuaTele.getUser(Message_Reply.sender.user_id)
 if tonumber(Message_Reply.sender.user_id) == tonumber(msg.sender.user_id) then
 return LuaTele.sendText(msg_chat_id,msg_id,"*الحق الود تعبان عوز يتجوز نفسه 😂*","md",true)  
 end
-if tonumber(Message_Reply.sender.user_id) == tonumber(MEZO) then
+if tonumber(Message_Reply.sender.user_id) == tonumber(TheMEZO) then
 return LuaTele.sendText(msg_chat_id,msg_id,"*شوفلك كلبه غير البوت يبنوسخه 😒*","md",true)  
 end
-if Redis:sismember(MEZO..msg_chat_id.."zwgat:",Message_Reply.sender.user_id) then
+if Redis:sismember(TheMEZO..msg_chat_id.."zwgat:",Message_Reply.sender.user_id) then
 local rd_mtzwga = {
 "الا تصلح انت تكون متجوزه 😹",
 "المزه متجوزه مسبقا 😒",
@@ -4405,10 +4405,10 @@ local rd_zwag = {
 "تم الزواج من المزه الجامده 💋💞",
 "تم الزواج امتاا الدخله 😅😂",
 }
-if Redis:sismember(MEZO..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id) then 
-Redis:srem(MEZO..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id)
+if Redis:sismember(TheMEZO..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id) then 
+Redis:srem(TheMEZO..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id)
 end
-Redis:sadd(MEZO..msg_chat_id.."zwgat:",Message_Reply.sender.user_id) 
+Redis:sadd(TheMEZO..msg_chat_id.."zwgat:",Message_Reply.sender.user_id) 
 return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(Message_Reply.sender.user_id,rd_zwag[math.random(#rd_zwag)]).Reply,"md",true)  
 end
 end
@@ -4418,12 +4418,12 @@ local UserInfo = LuaTele.getUser(Message_Reply.sender.user_id)
 if tonumber(Message_Reply.sender.user_id) == tonumber(msg.sender.user_id) then
 return LuaTele.sendText(msg_chat_id,msg_id,"احا هو انت كنت اتجوزت نفسك عشان تطلق","md",true)  
 end
-if tonumber(Message_Reply.sender.user_id) == tonumber(MEZO) then
+if tonumber(Message_Reply.sender.user_id) == tonumber(TheMEZO) then
 return LuaTele.sendText(msg_chat_id,msg_id,"هو احنا كنا اتجوزنا يروح خالتك عشان نطلق","md",true)  
 end
-if Redis:sismember(MEZO..msg_chat_id.."zwgat:",Message_Reply.sender.user_id) then
-Redis:srem(MEZO..msg_chat_id.."zwgat:",Message_Reply.sender.user_id)
-Redis:sadd(MEZO..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id) 
+if Redis:sismember(TheMEZO..msg_chat_id.."zwgat:",Message_Reply.sender.user_id) then
+Redis:srem(TheMEZO..msg_chat_id.."zwgat:",Message_Reply.sender.user_id)
+Redis:sadd(TheMEZO..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id) 
 local rd_tmtlaq = {
 "تم الطلاق وخربان البيت 😂",
 "تم الطلاق وده الشطان 😹",
@@ -4442,32 +4442,32 @@ end
 if text == "رفع متوحد" or text == "متوحد" and msg.reply_to_message_id ~= 0 then
 local Message_Reply = LuaTele.getMessage(msg.chat_id, msg.reply_to_message_id)
 local UserInfo = LuaTele.getUser(Message_Reply.sender.user_id)
-if tonumber(Message_Reply.sender.user_id) == tonumber(MEZO) then
+if tonumber(Message_Reply.sender.user_id) == tonumber(TheMEZO) then
 return LuaTele.sendText(msg_chat_id,msg_id,"*لا استطيع استخدام الأمر علي البوت ❍┃ *","md",true)  
 end
-if Redis:sismember(MEZO..msg_chat_id.."lonely:",Message_Reply.sender.user_id) then
+if Redis:sismember(TheMEZO..msg_chat_id.."lonely:",Message_Reply.sender.user_id) then
 local rd_mtzwga = {"تم رفعه متوحد مسبقا 😂",
 }
 return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(Message_Reply.sender.user_id,rd_mtzwga[math.random(#rd_mtzwga)]).Reply,"md",true)  
 else
 local rd_zwag = {"تم رفعه متوحد في الجروب 😂",
 }
-if Redis:sismember(MEZO..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id) then 
-Redis:srem(MEZO..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id)
+if Redis:sismember(TheMEZO..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id) then 
+Redis:srem(TheMEZO..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id)
 end
-Redis:sadd(MEZO..msg_chat_id.."lonely:",Message_Reply.sender.user_id) 
+Redis:sadd(TheMEZO..msg_chat_id.."lonely:",Message_Reply.sender.user_id) 
 return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(Message_Reply.sender.user_id,rd_zwag[math.random(#rd_zwag)]).Reply,"md",true)  
 end
 end
 if text == "تنزيل متوحد" or text == "تنزل المتوحد" and msg.reply_to_message_id ~= 0 then
 local Message_Reply = LuaTele.getMessage(msg.chat_id, msg.reply_to_message_id)
 local UserInfo = LuaTele.getUser(Message_Reply.sender.user_id)
-if tonumber(Message_Reply.sender.user_id) == tonumber(MEZO) then
+if tonumber(Message_Reply.sender.user_id) == tonumber(TheMEZO) then
 return LuaTele.sendText(msg_chat_id,msg_id,"*لا استطيع استخدام الأمر علي البوت ❍┃ *","md",true)  
 end
-if Redis:sismember(MEZO..msg_chat_id.."lonely:",Message_Reply.sender.user_id) then
-Redis:srem(MEZO..msg_chat_id.."lonely:",Message_Reply.sender.user_id)
-Redis:sadd(MEZO..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id) 
+if Redis:sismember(TheMEZO..msg_chat_id.."lonely:",Message_Reply.sender.user_id) then
+Redis:srem(TheMEZO..msg_chat_id.."lonely:",Message_Reply.sender.user_id)
+Redis:sadd(TheMEZO..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id) 
 local rd_tlaq = {"😂 تم تنزيله متوحد",
 }
 return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(Message_Reply.sender.user_id,rd_tmtlaq[math.random(#rd_tmtlaq)]).Reply,"md",true)  
@@ -4480,32 +4480,32 @@ end
 if text == "رفع كلب" or text == "كلب" and msg.reply_to_message_id ~= 0 then
 local Message_Reply = LuaTele.getMessage(msg.chat_id, msg.reply_to_message_id)
 local UserInfo = LuaTele.getUser(Message_Reply.sender.user_id)
-if tonumber(Message_Reply.sender.user_id) == tonumber(MEZO) then
+if tonumber(Message_Reply.sender.user_id) == tonumber(TheMEZO) then
 return LuaTele.sendText(msg_chat_id,msg_id,"*لا استطيع استخدام الأمر علي البوت ❍┃ *","md",true)  
 end
-if Redis:sismember(MEZO..msg_chat_id.."klbklb:",Message_Reply.sender.user_id) then
+if Redis:sismember(TheMEZO..msg_chat_id.."klbklb:",Message_Reply.sender.user_id) then
 local rd_mtzwga = {"تم رفعه كلب مسبقا 😂",
 }
 return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(Message_Reply.sender.user_id,rd_mtzwga[math.random(#rd_mtzwga)]).Reply,"md",true)  
 else
 local rd_zwag = {"تم رفعه كلب في الجروب 😂",
 }
-if Redis:sismember(MEZO..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id) then 
-Redis:srem(MEZO..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id)
+if Redis:sismember(TheMEZO..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id) then 
+Redis:srem(TheMEZO..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id)
 end
-Redis:sadd(MEZO..msg_chat_id.."klbklb:",Message_Reply.sender.user_id) 
+Redis:sadd(TheMEZO..msg_chat_id.."klbklb:",Message_Reply.sender.user_id) 
 return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(Message_Reply.sender.user_id,rd_zwag[math.random(#rd_zwag)]).Reply,"md",true)  
 end
 end
 if text == "تنزيل كلب" or text == "تنزل الكلب" and msg.reply_to_message_id ~= 0 then
 local Message_Reply = LuaTele.getMessage(msg.chat_id, msg.reply_to_message_id)
 local UserInfo = LuaTele.getUser(Message_Reply.sender.user_id)
-if tonumber(Message_Reply.sender.user_id) == tonumber(MEZO) then
+if tonumber(Message_Reply.sender.user_id) == tonumber(TheMEZO) then
 return LuaTele.sendText(msg_chat_id,msg_id,"*لا استطيع استخدام الأمر علي البوت ❍┃ *","md",true)  
 end
-if Redis:sismember(MEZO..msg_chat_id.."klbklb:",Message_Reply.sender.user_id) then
-Redis:srem(MEZO..msg_chat_id.."klbklb:",Message_Reply.sender.user_id)
-Redis:sadd(MEZO..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id) 
+if Redis:sismember(TheMEZO..msg_chat_id.."klbklb:",Message_Reply.sender.user_id) then
+Redis:srem(TheMEZO..msg_chat_id.."klbklb:",Message_Reply.sender.user_id)
+Redis:sadd(TheMEZO..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id) 
 local rd_tlaq = {"😂 تم تنزيله كلب",
 }
 return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(Message_Reply.sender.user_id,rd_tmtlaq[math.random(#rd_tmtlaq)]).Reply,"md",true)  
@@ -4521,10 +4521,10 @@ local UserInfo = LuaTele.getUser(Message_Reply.sender.user_id)
 if tonumber(Message_Reply.sender.user_id) == tonumber(msg.sender.user_id) then
 return LuaTele.sendText(msg_chat_id,msg_id,"*الحق الود تعبان عايز يموت نفسه 😂*","md",true)  
 end
-if tonumber(Message_Reply.sender.user_id) == tonumber(MEZO) then
+if tonumber(Message_Reply.sender.user_id) == tonumber(TheMEZO) then
 return LuaTele.sendText(msg_chat_id,msg_id,"*شوفلك حد غير البوت يبنوسخه 😒*","md",true)  
 end
-if Redis:sismember(MEZO..msg_chat_id.."zwgat:",Message_Reply.sender.user_id) then
+if Redis:sismember(TheMEZO..msg_chat_id.."zwgat:",Message_Reply.sender.user_id) then
 local rd_mtzwga = {
 "مااااتتتت خلااااصصصص😹💔 ",
 "ده اتدفن يعم شوف حد تاني نقتلو🥲",
@@ -4537,10 +4537,10 @@ local rd_zwag = {
 "تم القتل بنجاح😈",
 "تم القتل بنجاح😈",
 }
-if Redis:sismember(MEZO..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id) then 
-Redis:srem(MEZO..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id)
+if Redis:sismember(TheMEZO..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id) then 
+Redis:srem(TheMEZO..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id)
 end
-Redis:sadd(MEZO..msg_chat_id.."zwgat:",Message_Reply.sender.user_id) 
+Redis:sadd(TheMEZO..msg_chat_id.."zwgat:",Message_Reply.sender.user_id) 
 return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(Message_Reply.sender.user_id,rd_zwag[math.random(#rd_zwag)]).Reply,"md",true)  
 end
 end
@@ -9721,7 +9721,7 @@ return LuaTele.sendText(msg_chat_id,msg_id,'\n* ◉ مطور البوت : {*['..
 end
 end
 end
-if text == 'مبرمج السورس' or text == 'سوريا' or text == 'احمد سوريا' or text == 'جامد' then
+if text == 'مبرمج السورس' or text == 'قمد' or text == 'احمد سوريا' or text == 'جامد' then
 local UserId_Info = LuaTele.searchPublicChat("Y_U_A_R")
 if UserId_Info.id then
 local UserInfo = LuaTele.getUser(UserId_Info.id)
@@ -10647,7 +10647,7 @@ data = {
 },
 }
 }
-return LuaTele.sendText(msg_chat_id,msg_id,'*فرح خالتك قريب 😹💋💃??*',"md",false, false, false, false, reply_markup)
+return LuaTele.sendText(msg_chat_id,msg_id,'*فرح خالتك قريب 😹💋💃🏻*',"md",false, false, false, false, reply_markup)
 end
 if text == 'حاضر' or text == 'حتر' then
 if not Redis:get(TheMEZO.."MEZO:Sasa:Jeka"..msg_chat_id) then
