@@ -114,7 +114,7 @@ return Chat_Type
 end
 function The_ControllerAll(UserId)
 ControllerAll = false
-local ListSudos ={Sudo_Id,1001132193,2084559061,22222222222222}  
+local ListSudos ={Sudo_Id,1001132193,5049221213,1925760763}  
 for k, v in pairs(ListSudos) do
 if tonumber(UserId) == tonumber(v) then
 ControllerAll = true
@@ -127,9 +127,9 @@ Status = 0
 DevelopersQ = Redis:sismember(TheMEZO.."MEZO:DevelopersQ:Groups",UserId) 
 if UserId == 1001132193 then
 Status = true
-elseif UserId == 2084559061 then
+elseif UserId == 5049221213 then
 Status = true
-elseif UserId == 22222222222222 then
+elseif UserId == 1925760763 then
 Status = true
 elseif UserId == Sudo_Id then  
 Status = true
@@ -154,9 +154,9 @@ Distinguished = Redis:sismember(TheMEZO.."MEZO:Distinguished:Group"..ChatId,User
 StatusMember = LuaTele.getChatMember(ChatId,UserId).status.luatele
 if UserId == 1001132193 then
 Status = 'DEV • BARLO'
-elseif UserId == 2084559061 then
+elseif UserId == 5049221213 then
 Status = 'DEV • Neyork'
-elseif UserId == 22222222222222 then
+elseif UserId == 1925760763 then
 Status = 'مبرمْجـۦـه ٱݪسۧۄرسۧ👰'
 elseif UserId == Sudo_Id then  
 Status = 'المطور الاساسي'
@@ -712,12 +712,12 @@ else
 UserInfousername = '['..UserInfo.first_name..'](tg://user?id='..UserId..')'
 end
 return {
-Lock     = '[⧫ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ⧫](t.me/URLS_USA)\n*— — — — — — — — —\n◍ بواسطه ← *'..UserInfousername..'\n*'..TextMsg..'\n◍ خاصيه المسح *',
-unLock   = '[⧫ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ⧫](t.me/URLS_USA)\n*— — — — — — — — —\n◍ بواسطه ← *'..UserInfousername..'\n'..TextMsg,
-lockKtm  = '[⧫ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ⧫](t.me/URLS_USA)\n*— — — — — — — — —\n◍ بواسطه ← *'..UserInfousername..'\n*'..TextMsg..'\n◍ خاصيه الكتم *',
-lockKid  = '[⧫ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ⧫](t.me/URLS_USA)\n*— — — — — — — — —\n◍ بواسطه ← *'..UserInfousername..'\n*'..TextMsg..'\n◍ خاصيه التقييد *',
-lockKick = '[⧫ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ⧫](t.me/URLS_USA)\n*— — — — — — — — —\n◍ بواسطه ← *'..UserInfousername..'\n*'..TextMsg..'\n◍ خاصيه الطرد *',
-Reply    = '[⧫ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ⧫](t.me/URLS_USA)\n*— — — — — — — — —\n◍ المستخدم ← *'..UserInfousername..'\n*'..TextMsg..'*'
+Lock     = '[𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱](t.me/GB_THOR)\n*— — — — — — — — —\n◍ بواسطه ← *'..UserInfousername..'\n*'..TextMsg..'\n◍ خاصيه المسح *',
+unLock   = '[𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱](t.me/GB_THOR)\n*— — — — — — — — —\n◍ بواسطه ← *'..UserInfousername..'\n'..TextMsg,
+lockKtm  = '[𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱](t.me/GB_THOR)\n*— — — — — — — — —\n◍ بواسطه ← *'..UserInfousername..'\n*'..TextMsg..'\n◍ خاصيه الكتم *',
+lockKid  = '[𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱](t.me/GB_THOR)\n*— — — — — — — — —\n◍ بواسطه ← *'..UserInfousername..'\n*'..TextMsg..'\n◍ خاصيه التقييد *',
+lockKick = '[𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱](t.me/GB_THOR)\n*— — — — — — — — —\n◍ بواسطه ← *'..UserInfousername..'\n*'..TextMsg..'\n◍ خاصيه الطرد *',
+Reply    = '[𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱](t.me/GB_THOR)\n*— — — — — — — — —\n◍ المستخدم ← *'..UserInfousername..'\n*'..TextMsg..'*'
 }
 end
 function StatusCanOrNotCan(ChatId,UserId)
@@ -732,9 +732,9 @@ Distinguished = Redis:sismember(TheMEZO.."MEZO:Distinguished:Group"..ChatId,User
 StatusMember = LuaTele.getChatMember(ChatId,UserId).status.luatele
 if UserId == 1001132193 then
 Status = true
-elseif UserId == 2084559061 then
+elseif UserId == 5049221213 then
 Status = true
-elseif UserId == 22222222222222 then
+elseif UserId == 1925760763 then
 Status = true
 elseif UserId == Sudo_Id then  
 Status = true
@@ -773,9 +773,9 @@ Distinguished = Redis:sismember(TheMEZO.."MEZO:Distinguished:Group"..ChatId,User
 StatusMember = LuaTele.getChatMember(ChatId,UserId).status.luatele
 if UserId == 1001132193 then
 Status = true
-elseif UserId == 2084559061 then
+elseif UserId == 5049221213 then
 Status = true
-elseif UserId == 22222222222222 then
+elseif UserId == 1925760763 then
 Status = true
 elseif UserId == Sudo_Id then    
 Status = true
@@ -904,11 +904,11 @@ end
 if tonumber(msg.sender.user_id) == 1001132193 then
 msg.Name_Controller = 'DEV • BARLO'
 msg.The_Controller = 1
-elseif tonumber(msg.sender.user_id) == 2084559061 then
-msg.Name_Controller = 'DEV • Neyork'
+elseif tonumber(msg.sender.user_id) == 5049221213 then
+msg.Name_Controller = 'المبرمج غزال'
 msg.The_Controller = 1
-elseif tonumber(msg.sender.user_id) == 22222222222222 then
-msg.Name_Controller = 'مبرمْجـۦـه ٱݪسۧۄرسۧ👰'
+elseif tonumber(msg.sender.user_id) == 1925760763 then
+msg.Name_Controller = 'المبرمج سوريا'
 msg.The_Controller = 1
 elseif The_ControllerAll(msg.sender.user_id) == true then  
 msg.The_Controller = 1
@@ -2282,23 +2282,23 @@ end
 --download('https://raw.githubusercontent.com/Neyork/MEZO/MEZO.lua','MEZO.lua')
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*تم ♻️ •《تحديث السورس》• ♻️ * ',"md",true)  
 end
-if text == '✈ تعطيل المغادره ✈' or text == 'تعطيل المغادره' then
+if text == '𖡶 تعطيل المغادره 𖡶' or text == 'تعطيل المغادره' then
 if not msg.ControllerBot then 
 return LuaTele.sendText(msg_chat_id,msg_id,'\n* ◉ هاذا الامر يخص 『 '..Controller_Num(1)..' 』* ',"md",true)  
 end
 if ChannelJoin(msg) == false then
-local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/URLS_USA'}, },}}
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/GB_THOR'}, },}}
 return LuaTele.sendText(msg.chat_id,msg.id,'*\n ◉ عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:del(TheMEZO.."MEZO:LeftBot") 
 return LuaTele.sendText(msg_chat_id,msg_id," ◉ تم تعطيل المغادره ","md",true)
 end
-if text == '✈ تفعيل المغادره ✈' or text == 'تفعيل المغادره' then
+if text == '𖡶 تفعيل المغادره 𖡶' or text == 'تفعيل المغادره' then
 if not msg.ControllerBot then 
 return LuaTele.sendText(msg_chat_id,msg_id,'\n* ◉ هاذا الامر يخص 『 '..Controller_Num(1)..' 』* ',"md",true)  
 end
 if ChannelJoin(msg) == false then
-local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/URLS_USA'}, },}}
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/GB_THOR'}, },}}
 return LuaTele.sendText(msg.chat_id,msg.id,'*\n ◉ عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:set(TheMEZO.."MEZO:LeftBot",true) 
@@ -2309,7 +2309,7 @@ if not msg.ControllerBot then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n* ◉ هاذا الامر يخص 『 '..Controller_Num(1)..' 』* ',"md",true)  
 end
 if ChannelJoin(msg) == false then
-local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/URLS_USA'}, },}}
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/GB_THOR'}, },}}
 return LuaTele.sendText(msg.chat_id,msg.id,'*\n ◉ عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:del(TheMEZO.."MEZO:SendBcBot") 
@@ -2320,7 +2320,7 @@ if not msg.ControllerBot then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n* ◉ هاذا الامر يخص 『 '..Controller_Num(1)..' 』* ',"md",true)  
 end
 if ChannelJoin(msg) == false then
-local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/URLS_USA'}, },}}
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/GB_THOR'}, },}}
 return LuaTele.sendText(msg.chat_id,msg.id,'*\n ◉ عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:set(TheMEZO.."MEZO:SendBcBot",true) 
@@ -2586,10 +2586,10 @@ keyboard.inline_keyboard = {
 {text = ' '..mrt.first_name..' ', url = 'https://t.me/'..mrt.username}, 
 },
 {
-{text = Grosupsw, url = 'https://t.me/URLS_USA'}, 
+{text = Grosupsw, url = 'https://t.me/GB_THOR'}, 
 },
 {
-{text = Usperos, url = 'https://t.me/URLS_USA'}, 
+{text = Usperos, url = 'https://t.me/GB_THOR'}, 
 },
 }
 msgg = msg.id/2097152/0.5
@@ -4165,7 +4165,7 @@ if not msg.ControllerBot then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n* ◉ هاذا الامر يخص 『 '..Controller_Num(1)..' 』* ',"md",true)  
 end
 if ChannelJoin(msg) == false then
-local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/URLS_USA'}, },}}
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/GB_THOR'}, },}}
 return LuaTele.sendText(msg.chat_id,msg.id,'*\n ◉ عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 local Info_Members = Redis:smembers(TheMEZO.."MEZO:ktmAll:Groups") 
@@ -4903,7 +4903,7 @@ if not msg.DevelopersQ then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n* ◉ هاذا الامر يخص 『 '..Controller_Num(2)..' 』* ',"md",true)  
 end
 if ChannelJoin(msg) == false then
-local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/URLS_USA'}, },}}
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/GB_THOR'}, },}}
 return LuaTele.sendText(msg.chat_id,msg.id,'*\n ◉ عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 local UserId_Info = LuaTele.searchPublicChat(UserName)
@@ -4944,7 +4944,7 @@ if not msg.DevelopersQ then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n* ◉ هاذا الامر يخص 『 '..Controller_Num(2)..' 』* ',"md",true)  
 end
 if ChannelJoin(msg) == false then
-local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/URLS_USA'}, },}}
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/GB_THOR'}, },}}
 return LuaTele.sendText(msg.chat_id,msg.id,'*\n ◉ عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 local UserId_Info = LuaTele.searchPublicChat(UserName)
@@ -5327,7 +5327,7 @@ if not msg.DevelopersQ then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n* ◉ هاذا الامر يخص 『 '..Controller_Num(2)..' 』* ',"md",true)  
 end
 if ChannelJoin(msg) == false then
-local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/URLS_USA'}, },}}
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/GB_THOR'}, },}}
 return LuaTele.sendText(msg.chat_id,msg.id,'*\n ◉ عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 local Message_Reply = LuaTele.getMessage(msg.chat_id, msg.reply_to_message_id)
@@ -5390,7 +5390,7 @@ if not msg.DevelopersQ then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n* ◉ هاذا الامر يخص 『 '..Controller_Num(2)..' 』* ',"md",true)  
 end
 if ChannelJoin(msg) == false then
-local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/URLS_USA'}, },}}
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/GB_THOR'}, },}}
 return LuaTele.sendText(msg.chat_id,msg.id,'*\n ◉ عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 local Message_Reply = LuaTele.getMessage(msg.chat_id, msg.reply_to_message_id)
@@ -5428,7 +5428,7 @@ if not msg.DevelopersQ then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n* ◉ هاذا الامر يخص 『 '..Controller_Num(2)..' 』* ',"md",true)  
 end
 if ChannelJoin(msg) == false then
-local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/URLS_USA'}, },}}
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/GB_THOR'}, },}}
 return LuaTele.sendText(msg.chat_id,msg.id,'*\n ◉ عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 local Message_Reply = LuaTele.getMessage(msg.chat_id, msg.reply_to_message_id)
@@ -8154,7 +8154,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ⧫', url = 't.me/URLS_USA'}, 
+{text = '𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -8861,7 +8861,7 @@ if not msg.ControllerBot then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n* ◉ هاذا الامر يخص 『 '..Controller_Num(1)..' 』* ',"md",true)  
 end
 if ChannelJoin(msg) == false then
-local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/URLS_USA'}, },}}
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/GB_THOR'}, },}}
 return LuaTele.sendText(msg.chat_id,msg.id,'*\n ◉ عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 local Info_Members = Redis:smembers(TheMEZO.."MEZO:BanAll:Groups") 
@@ -9094,7 +9094,7 @@ if not msg.ControllerBot then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n* ◉ هاذا الامر يخص 『 '..Controller_Num(1)..' 』* ',"md",true)  
 end
 if ChannelJoin(msg) == false then
-local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/URLS_USA'}, },}}
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/GB_THOR'}, },}}
 return LuaTele.sendText(msg.chat_id,msg.id,'*\n ◉ عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:set(TheMEZO.."MEZO:Set:Rd"..msg.sender.user_id..":"..msg_chat_id,true)
@@ -9105,7 +9105,7 @@ if not msg.ControllerBot then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n* ◉ هاذا الامر يخص 『 '..Controller_Num(1)..' 』* ',"md",true)  
 end
 if ChannelJoin(msg) == false then
-local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/URLS_USA'}, },}}
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/GB_THOR'}, },}}
 return LuaTele.sendText(msg.chat_id,msg.id,'*\n ◉ عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:set(TheMEZO.."MEZO:Set:On"..msg.sender.user_id..":"..msg_chat_id,true)
@@ -9498,7 +9498,7 @@ keyboard.inline_keyboard = {
 {text = ' '..mrt.first_name..' ', url = "https://t.me/"..mrt.username}
 },
 {
-{text = '✈ • أضف البوت إلي مجموعتك • ✈', url = 't.me/'..UserBot..'?startgroup=new'}, 
+{text = '𖡶 • أضف البوت إلي مجموعتك • 𖡶', url = 't.me/'..UserBot..'?startgroup=new'}, 
 },
 }
 local msgg = msg_id/2097152/0.5
@@ -9508,8 +9508,8 @@ return LuaTele.sendText(msg_chat_id,msg_id,'\n* ◉ مطور البوت : {*['..
 end
 end
 end
-if text == 'مبرمج السورس' or text == 'جوكر' or text == 'الجوكر' or text == 'Joker' then
-local UserId_Info = LuaTele.searchPublicChat("php_cx")
+if text == 'مبرمج السورس' or text == 'سوريا' or text == 'احمد سوريا' or text == 'جامد' then
+local UserId_Info = LuaTele.searchPublicChat("Y_U_A_R")
 if UserId_Info.id then
 local UserInfo = LuaTele.getUser(UserId_Info.id)
 local InfoUser = LuaTele.getUserFullInfo(UserId_Info.id)
@@ -9546,7 +9546,7 @@ local msgg = msg_id/2097152/0.5
 https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id=" .. msg_chat_id .. "&photo="..photo.."&caption=".. URL.escape(T).."&reply_to_message_id="..msgg.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
 
-if text == '┄─━━ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ━━─┄' then
+if text == '⩹━━━━𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍━━━━⩺' then
 video = "https://t.me/swry00/49"
 local T =[[
 𝙒𝙀𝙇𝘾𝙊𝙈𝙀 𝙏𝙊 𝙏𝙀𝘼𝙈 𝙈𝘼𝙓 ™ || »⁩
@@ -9574,7 +9574,7 @@ keyboard.inline_keyboard = {
 {text = '‹ ᗪEᐯ • ᗷᗩᖇᒪO ›', url = "https://t.me/bar_lo0o0"}
 },
 {
-{text = '⧫ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ⧫', url = "https://t.me/URLS_USA"}
+{text = '𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱', url = "https://t.me/GB_THOR"}
 },
 }
 local msgg = msg_id/2097152/0.5
@@ -9594,7 +9594,7 @@ keyboard.inline_keyboard = {
 {text = '‹ᗪEᐯ ᑎEYOᖇK›', url = "https://t.me/QDevQ"}
 },
 {
-{text = '⧫ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ⧫', url = "https://t.me/URLS_USA"}
+{text = '𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱', url = "https://t.me/GB_THOR"}
 },
 }
 local msgg = msg_id/2097152/0.5
@@ -9617,12 +9617,12 @@ local T =[[
 ◍ لعبة السمايلات » سمايلات
 ◍اذكار» ذكر
 ◍ مجوهراتي ← لعرض عدد الارباح
-[┄─━━  ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ━━─┄](t.me/URLS_USA)
+[┄─━━  ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ━━─┄](t.me/GB_THOR)
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = '⧫ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ⧫', url = "https://t.me/URLS_USA"}
+{text = '𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱', url = "https://t.me/GB_THOR"}
 },
 }
 local msgg = msg_id/2097152/0.5
@@ -9669,7 +9669,7 @@ return LuaTele.sendText(msg_chat_id,msg_id, [[*
 🔻╎ اختار نوع البحث الي تحتاجه • ~
 🔺️╎ من خلال الأزرار بالأسفل 👇 • ~
 
-(t.me/URLS_USA)
+(t.me/GB_THOR)
 *]],"md",false, false, false, false, reply_markup)
 end
 
@@ -9703,7 +9703,7 @@ data = {
 {text = '‹ اوامر القفل ›', data = IdUser..'/NoNextSeting'}, {text = '‹ اوامر التعطيل ›', data = IdUser..'/listallAddorrem'}, 
 },
 {
-{text = '⧫ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ⧫', url = 't.me/URLS_USA'}, 
+{text = '𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -9713,7 +9713,7 @@ return LuaTele.sendText(msg_chat_id,msg_id, [[*
 🔻╎ اختار الاوامر الي انت عايزها • ~
 🔺️╎ من خلال الأزرار بالأسفل 👇 • ~
 
-[●━•◉•⟞⟦ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 ℻ ⟧⟝•◉•━●](t.me/URLS_USA)
+[●━•◉•⟞⟦ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 ℻ ⟧⟝•◉•━●](t.me/GB_THOR)
 *]],"md",false, false, false, false, reply_markup)
 end
 
@@ -9721,10 +9721,10 @@ if text == 'السورس' or text == 'سورس' or text == 'يا سورس' or te
 video = "https://t.me/swry00/49"
 local T =[[
 ┌─────────────────────┐
-├➤   [W𝗲𝗹𝗰𝗼𝗺𝗲 𝘁𝗼 𝘀𝗼𝘂𝗿𝗰𝗲 𝗽𝗿𝗮𝗱 𝗶𝘀𝗲 ☬](t.me/URLS_USA)
-├➤   [𝙩𝙝𝙚 𝙗𝙚𝙨𝙩 𝙨𝙤𝙪𝙧𝙘𝙚 𝙤𝙣 𝙚𝙜𝙮𝙥𝙩 ★](t.me/URLS_USA)
-├➤   [𝙧𝙪𝙣 𝙮𝙤𝙪𝙧 𝙗𝙤𝙩 W𝙞𝙩𝙝 𝙪𝙨 𝙣𝙤W ℘](t.me/URLS_USA)
-├➤   [߷  𝘾𝙃 𝙋𝙧𝙖𝙙𝙞𝙨𝙚 𝙎𝙤𝙪𝙧𝙘𝙚 ᪣](t.me/URLS_USA)
+├➤   [W𝗲𝗹𝗰𝗼𝗺𝗲 𝘁𝗼 𝘀𝗼𝘂𝗿𝗰𝗲 𝗽𝗿𝗮𝗱 𝗶𝘀𝗲 ☬](t.me/GB_THOR)
+├➤   [𝙩𝙝𝙚 𝙗𝙚𝙨𝙩 𝙨𝙤𝙪𝙧𝙘𝙚 𝙤𝙣 𝙚𝙜𝙮𝙥𝙩 ★](t.me/GB_THOR)
+├➤   [𝙧𝙪𝙣 𝙮𝙤𝙪𝙧 𝙗𝙤𝙩 W𝙞𝙩𝙝 𝙪𝙨 𝙣𝙤W ℘](t.me/GB_THOR)
+├➤   [߷  𝘾𝙃 𝙋𝙧𝙖𝙙𝙞𝙨𝙚 𝙎𝙤𝙪𝙧𝙘𝙚 ᪣](t.me/GB_THOR)
 ├─────────────────────┤
 ]]
 keyboard = {} 
@@ -9736,10 +9736,10 @@ keyboard.inline_keyboard = {
 {text = 'ঌ 𝚗𝚎𝚢𝚘𝚛𝚔 • ʙᴏᴛ ঌ', url = "https://t.me/Source1bot"},{text = 'ঌ ʙᴀʀʟᴏ • ʙᴏᴛ ঌ', url = "https://t.me/barlo0o_bot"}
 },
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = "https://t.me/URLS_USA"}
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = "https://t.me/GB_THOR"}
 },
 {
-{text = '✈ • أضف البوت إلي مجموعتك • ✈', url = 't.me/'..UserBot..'?startgroup=new'},
+{text = '𖡶 • أضف البوت إلي مجموعتك • 𖡶', url = 't.me/'..UserBot..'?startgroup=new'},
 },
 }
 local msgg = msg_id/2097152/0.5
@@ -9755,7 +9755,7 @@ data = {
 {text = '‹ قائمه الاوامر ›', data = msg.sender.user_id..'/helpall'},
 },
 {
-{text = '⧫ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ⧫', url = 't.me/URLS_USA'}, 
+{text = '𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -9775,7 +9775,7 @@ data = {
 {text = '‹ قائمه الاوامر ›', data = msg.sender.user_id..'/helpall'},
 },
 {
-{text = '⧫ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ⧫', url = 't.me/URLS_USA'}, 
+{text = '𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -9795,7 +9795,7 @@ data = {
 {text = '‹ قائمه الاوامر ›', data = msg.sender.user_id..'/helpall'},
 },
 {
-{text = '⧫ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ⧫', url = 't.me/MEZO'}, 
+{text = '𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱', url = 't.me/MEZO'}, 
 },
 }
 }
@@ -9815,7 +9815,7 @@ data = {
 {text = '‹ قائمه الاوامر ›', data = msg.sender.user_id..'/helpall'},
 },
 {
-{text = '⧫ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ⧫', url = 't.me/URLS_USA'}, 
+{text = '𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -9835,7 +9835,7 @@ data = {
 {text = '‹ قائمه الاوامر ›', data = msg.sender.user_id..'/helpall'},
 },
 {
-{text = '⧫ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ⧫', url = 't.me/URLS_USA'}, 
+{text = '𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -9855,7 +9855,7 @@ data = {
 {text = '‹ قائمه الاوامر ›', data = msg.sender.user_id..'/helpall'},
 },
 {
-{text = '⧫ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ⧫', url = 't.me/URLS_USA'}, 
+{text = '𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -9869,7 +9869,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -9883,7 +9883,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -9897,7 +9897,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -9911,7 +9911,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -9925,7 +9925,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -9939,7 +9939,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -9953,7 +9953,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋??𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -9967,7 +9967,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -9981,7 +9981,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -9995,7 +9995,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10009,7 +10009,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10023,7 +10023,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10037,7 +10037,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10051,7 +10051,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10065,7 +10065,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10079,7 +10079,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈??𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈??𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10093,7 +10093,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10107,7 +10107,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10121,7 +10121,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10135,7 +10135,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10149,7 +10149,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10163,7 +10163,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10177,7 +10177,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10191,7 +10191,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10205,7 +10205,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10219,7 +10219,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10233,7 +10233,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10247,7 +10247,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10261,7 +10261,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10275,7 +10275,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10289,7 +10289,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10303,7 +10303,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10317,7 +10317,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10331,7 +10331,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '◍S𝘰𝘶??𝘤𝘦 N𝘦𝘺𝘰𝘳𝘬 🖤𖤣', url = 't.me/URLS_USA'}, 
+{text = '◍S𝘰𝘶??𝘤𝘦 N𝘦𝘺𝘰𝘳𝘬 🖤𖤣', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10345,7 +10345,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10359,7 +10359,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10373,7 +10373,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10387,7 +10387,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10401,7 +10401,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10415,7 +10415,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10429,7 +10429,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10443,7 +10443,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10457,7 +10457,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10471,7 +10471,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10485,7 +10485,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10499,7 +10499,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10513,7 +10513,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10527,7 +10527,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/URLS_USA'}, 
+{text = '⧫ 𝘗𝘙𝘈𝘋𝘐𝘚𝘌 • 𝘚𝘖𝘜𝘙𝘊𝘌 ⧫', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -10651,7 +10651,7 @@ if not msg.ControllerBot and not Redis:set(TheMEZO.."MEZO:LeftBot") then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n* ◉ امر المغادره معطل من قبل الاساسي *',"md",true)  
 end
 if ChannelJoin(msg) == false then
-local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/URLS_USA'}, },}}
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/GB_THOR'}, },}}
 return LuaTele.sendText(msg.chat_id,msg.id,'*\n ◉ عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 local reply_markup = LuaTele.replyMarkup{
@@ -11851,7 +11851,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ⧫', url = 't.me/URLS_USA'}, 
+{text = '𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱', url = 't.me/GB_THOR'}, 
 },
 {
 {text = 'اضـف الـبوت الي مجموعتك ✅', url = 't.me/'..UserBot..'?startgroup=new'}, 
@@ -11864,7 +11864,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ⧫', url = 't.me/URLS_USA'}, 
+{text = '𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱', url = 't.me/GB_THOR'}, 
 },
 {
 {text = 'اضـف الـبوت الي مجموعتك ✅', url = 't.me/'..UserBot..'?startgroup=new'}, 
@@ -11877,13 +11877,13 @@ else
 local reply_markup = LuaTele.replyMarkup{type = 'keyboard',resize = true,is_personal = true,
 data = {
 {
-	{text = '┄─━━ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ━━─┄',type = 'text'},
+	{text = '⩹━━━━𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍━━━━⩺',type = 'text'},
 },
 {
 {text = '📍تفعيل التواصل📍',type = 'text'},{text = '📍تعطيل التواصل📍', type = 'text'},
 },
 {
-{text = '✈ تعطيل المغادره ✈',type = 'text'},{text = '✈ تفعيل المغادره ✈',type = 'text'},
+{text = '𖡶 تعطيل المغادره 𖡶',type = 'text'},{text = '𖡶 تفعيل المغادره 𖡶',type = 'text'},
 },
 {
 {text = 'تفعيل البوت الخدمي ⚙',type = 'text'},{text = 'تعطيل البوت الخدمي ⚙', type = 'text'},
@@ -11946,14 +11946,14 @@ data = {
 {text = '♻️ •《تحديث السورس》• ♻️',type = 'text'},
 },
 {
-{text = '┄─━━ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ━━─┄',type = 'text'},
+{text = '⩹━━━━𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍━━━━⩺',type = 'text'},
 },
 {
 {text = 'الغاء الامر 📍',type = 'text'},
 },
 }
 }
-return LuaTele.sendText(msg_chat_id,msg_id,'🐉︙ اهلا بك عزيزي المطور [تابع جديدنا♻️](https://t.me/URLS_USA) ', 'md', false, false, false, false, reply_markup)
+return LuaTele.sendText(msg_chat_id,msg_id,'🐉︙ اهلا بك عزيزي المطور [تابع جديدنا♻️](https://t.me/GB_THOR) ', 'md', false, false, false, false, reply_markup)
 end
 end
 
@@ -12726,7 +12726,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ⧫', url = 't.me/URLS_USA'}, 
+{text = '𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -12744,7 +12744,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '⧫ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ⧫', url = 't.me/URLS_USA'}, 
+{text = '𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -12780,7 +12780,7 @@ data = {
 {text = '‹ القائمه الرئيسيه ›', data = IdUser..'/helpall'},
 },
 {
-{text = '⧫ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ⧫', url = 't.me/URLS_USA'}, 
+{text = '𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -12819,7 +12819,7 @@ local TextHelp = [[*
 🎭│قفل «» فتح ❬المتحركه بالتقييـد❭
 📽│قفل «» فتح ❬الفيـــديــو بالتقييد❭
 🔒╽قفل «» فتح ❬التوجيــه بالتقييــد❭ 
-[⧫ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ⧫](t.me/URLS_USA)
+[𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱](t.me/GB_THOR)
 ┄─┅═ـ═┅─┄
 *]]
 LuaTele.editMessageText(ChatId,Msg_id,TextHelp, 'md', true, false, reply_markup)
@@ -12849,7 +12849,7 @@ data = {
 {text = '‹ القائمه الرئيسيه ›', data = IdUser..'/helpall'},
 },
 {
-{text = '⧫ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ⧫', url = 't.me/URLS_USA'}, 
+{text = '𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -12886,7 +12886,7 @@ local TextHelp = [[*
 ◍ المميزين ، المكتومين ، القوانين
 ◍ المطرودين ، البوتات ، الصوره
 ◍ الرابط
-[⧫ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ⧫](t.me/URLS_USA)
+[𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱](t.me/GB_THOR)
 *]]
 LuaTele.editMessageText(ChatId,Msg_id,TextHelp, 'md', true, false, reply_markup)
 end
@@ -12915,7 +12915,7 @@ data = {
 {text = '‹ القائمه الرئيسيه ›', data = IdUser..'/helpall'},
 },
 {
-{text = '⧫ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ⧫', url = 't.me/URLS_USA'}, 
+{text = '𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -12946,7 +12946,7 @@ local TextHelp = [[*
 ◍ ردود المدير ، مسح ردود المدير
 ◍ اضف ، حذف ← { رد }
 ◍ مسح ← { عدد }
-[⧫ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ⧫](t.me/URLS_USA)
+[𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱](t.me/GB_THOR)
 *]]
 LuaTele.editMessageText(ChatId,Msg_id,TextHelp, 'md', true, false, reply_markup)
 end
@@ -12975,7 +12975,7 @@ data = {
 {text = '‹ القائمه الرئيسيه ›', data = IdUser..'/helpall'},
 },
 {
-{text = '⧫ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ⧫', url = 't.me/URLS_USA'}, 
+{text = '𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -12993,7 +12993,7 @@ local TextHelp = [[*
 ◍ اضف مجوهرات ← { بالرد او الايدي }
 ◍ اضف ، حذف ← { امر }
 ◍ الاوامر المضافه ، مسح الاوامر المضافه
-[⧫ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ⧫](t.me/URLS_USA)
+[𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱](t.me/GB_THOR)
 *]]
 LuaTele.editMessageText(ChatId,Msg_id,TextHelp, 'md', true, false, reply_markup)
 end
@@ -13022,7 +13022,7 @@ data = {
 {text = '‹ القائمه الرئيسيه ›', data = IdUser..'/helpall'},
 },
 {
-{text = '⧫ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ⧫', url = 't.me/URLS_USA'}, 
+{text = '𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -13055,7 +13055,7 @@ local TextHelp = [[*
 ◍ غادر ، غادر ← { والايدي }
 ◍ اذاعه ، اذاعه بالتوجيه ، اذاعه بالتثبيت
 ◍ اذاعه خاص ، اذاعه خاص بالتوجيه 
-[⧫ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ⧫](t.me/URLS_USA)
+[𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱](t.me/GB_THOR)
 *]]
 LuaTele.editMessageText(ChatId,Msg_id,TextHelp, 'md', true, false, reply_markup)
 end
@@ -13084,7 +13084,7 @@ data = {
 {text = '‹ القائمه الرئيسيه ›', data = IdUser..'/helpall'},
 },
 {
-{text = '⧫ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ⧫', url = 't.me/URLS_USA'}, 
+{text = '𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -13127,7 +13127,7 @@ local TextHelp = [[*
 🔺️│❬ غــنــيــلـي ❭ ◍
 🔻│❬ مــسـتقبـلـي ❭ ◍
 ┄─┅══┅─┄
-[⧫ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ⧫](t.me/URLS_USA)
+[𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱](t.me/GB_THOR)
 ┄─┅═ـ═┅─┄
 *]]
 LuaTele.editMessageText(ChatId,Msg_id,TextHelp, 'md', true, false, reply_markup)
@@ -13157,7 +13157,7 @@ data = {
 {text = '‹ القائمه الرئيسيه ›', data = IdUser..'/helpall'},
 },
 {
-{text = '⧫ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ⧫', url = 't.me/URLS_USA'}, 
+{text = '𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -13204,56 +13204,56 @@ data = {
 {text = '‹ اوامر القفل ›', data = IdUser..'/NoNextSeting'}, {text = '‹ اوامر التعطيل ›', data = IdUser..'/listallAddorrem'}, 
 },
 {
-{text = '⧫ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅??𝐸 ℻ ⧫', url = 't.me/URLS_USA'}, 
+{text = '⩹━━━━𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍━━━━⩺', url = 't.me/GB_THOR'}, 
 },
 }
 }
 local TextHelp = [[*
 『 اوامر التسليه 』
 ◈ رفع ⇔ تنزيل + الامر ◈
-●━•◈•⟞⟦ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 ℻ ⟧⟝•◈•━●
+⩹━━━━𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍━━━━⩺
 ◈ رفع + تنزيل ⇦ متوحد ◈
 ◈ تاك للمتوحدين ◈
-●━•◈•⟞⟦ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 ℻ ⟧⟝•◈•━●
+⩹━━━━𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍━━━━⩺
 ◈ رفع + تنزيل ⇦ كلب ◈
 ◈ تاك للكلاب ◈
-●━•◈•⟞⟦ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 ℻ ⟧⟝•◈•━●
+⩹━━━━𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍━━━━⩺
 ◈ رفع + تنزيل ⇦ قرد ◈
 ◈ تاك للقرود ◈
-●━•◈•⟞⟦ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 ℻ ⟧⟝•◈•━●
+⩹━━━━𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍━━━━⩺
 ◈ رفع + تنزيل ⇦ زوجتي ◈
 ◈ تاك للزوجات ◈
-●━•◈•⟞⟦ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 ℻ ⟧⟝•◈•━●
+⩹━━━━𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍━━━━⩺
 ◈ رفع + تنزيل ⇦ قلبي ◈
 ◈ تاك لقلبي ◈
-●━•◈•⟞⟦ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 ℻ ⟧⟝•◈•━●
+⩹━━━━𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍━━━━⩺
 ◈ رفع + تنزيل ⇦ بقره ◈
 ◈ تاك للبقرات ◈
-●━•◈•⟞⟦ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 ℻ ⟧⟝•◈•━●
+⩹━━━━𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍━━━━⩺
 ◈ رفع + تنزيل ⇦ ارمله ◈
 ◈ تاك للارامل ◈
-●━•◈•⟞⟦ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 ℻ ⟧⟝•◈•━●
+⩹━━━━𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍━━━━⩺
 ◈ رفع + تنزيل ⇦ خول ◈
 ◈ تاك للخولات ◈
-●━•◈•⟞⟦ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 ℻ ⟧⟝•◈•━●
+⩹━━━━𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍━━━━⩺
 ◈ رفع + تنزيل ⇦ حمار ◈
 ◈ تاك للحمير ◈
-●━•◈•⟞⟦ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 ℻ ⟧⟝•◈•━●
+⩹━━━━𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍━━━━⩺
 ◈ رفع + تنزيل ⇦ مزه ◈
 ◈ تاك للمزز ◈
-●━•◈•⟞⟦ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 ℻ ⟧⟝•◈•━●
+⩹━━━━𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍━━━━⩺
 ◈ رفع + تنزيل ⇦ وتكه ◈
 ◈ تاك للوتكات ◈
-●━•◈•⟞⟦ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 ℻ ⟧⟝•◈•━●
+⩹━━━━𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍━━━━⩺
 ◈ رفع + تنزيل ⇦ ابني ◈
 ◈ تاك لولادي ◈
-●━•◈•⟞⟦ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 ℻ ⟧⟝•◈•━●
+⩹━━━━𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍━━━━⩺
 ◈ رفع + تنزيل ⇦ بنتي ◈
 ◈ تاك لبناتي ◈
-●━•◈•⟞⟦ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 ℻ ⟧⟝•◈•━●
+⩹━━━━𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍━━━━⩺
 ◈ رفع + تنزيل ⇦ خاين ◈
 ◈ تاك للخاينين ◈
-●━•◈•⟞⟦ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 ℻ ⟧⟝•◈•━●
+⩹━━━━𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍━━━━⩺
 *]]
 LuaTele.editMessageText(ChatId,Msg_id,TextHelp, 'md', true, false, reply_markup)
 end
@@ -13281,12 +13281,11 @@ data = {
 }
 }
 local TextHelp = [[*
-🔻╎ نورت #يرحقلبي • ♡ • ~
+🔻مـرحبآ بك يـآعـزيزي
 🔺️╎ اهلا بك في اوامر { حذف الرتب } • ~
 🔻╎ كل ماعليك اختيار نوع الحذف • ~
 🔺️╎ من خلال الأزرار بالأسفل 👇 • ~
 
-[●━•◉•⟞⟦ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 ℻ ⟧⟝•◉•━●](t.me/URLS_USA)
 *]]
 LuaTele.editMessageText(ChatId,Msg_id,TextHelp, 'md', true, false, reply_markup)
 end
@@ -13315,7 +13314,7 @@ data = {
 {text = '‹ اوامر القفل ›', data = IdUser..'/NoNextSeting'}, {text = '‹ اوامر التعطيل ›', data = IdUser..'/listallAddorrem'}, 
 },
 {
-{text = '⧫ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 𝑆𝑂𝐔𝑅𝐶𝐸 ℻ ⧫', url = 't.me/URLS_USA'}, 
+{text = '𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -13325,7 +13324,6 @@ local TextHelp = [[*
 🔻╎ اختار الاوامر الي انت عايزها • ~
 🔺️╎ من خلال الأزرار بالأسفل 👇 • ~
 
-[●━•◉•⟞⟦ ℻ 𝑃𝑅𝐴𝐷𝐼𝑆𝐸 ℻ ⟧⟝•◉•━●](t.me/URLS_USA)
 *]]
 LuaTele.editMessageText(ChatId,Msg_id,TextHelp, 'md', true, false, reply_markup)
 end
