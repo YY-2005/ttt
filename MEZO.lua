@@ -6723,7 +6723,7 @@ end
 if text then
 if text:match("^all (.*)$") or text:match("^@all (.*)$") or text == "@all" or text == "all" then 
 local ttag = text:match("^all (.*)$") or text:match("^@all (.*)$") 
-if not msg.Manger then
+if not msg.ControllerBot then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*※ هذا الامر يخص  '..Controller_Num(6)..' * ',"md",true)  
 end
 if Redis:get(TheMEZO.."lockalllll"..msg_chat_id) == "off" then
@@ -6945,7 +6945,7 @@ if text == "حذف رد انلاين" then
     return LuaTele.sendText(msg_chat_id,msg_id,"※ تم مسح قائمه الانلاين","md",true)  
     end
   if text == "اضف رد انلاين" then
-    if not msg.Admin then
+    if not msg.ControllerBot then
     return LuaTele.sendText(msg_chat_id,msg_id,'\n*※ هاذا الامر يخص  '..Controller_Num(7)..' * ',"md",true)  
     end
     Redis:set(TheMEZO.."Set:Manager:rd:inline"..msg.sender.user_id..":"..msg_chat_id,true)
@@ -13434,7 +13434,7 @@ if Redis:get(TheMEZO.."Set:Manager:rd:inline"..msg.sender.user_id..":"..msg_chat
   end
   end
   if text == ("الردود الانلاين") then
-    if not msg.Manger then
+    if not msg.ControllerBot then
     return LuaTele.sendText(msg_chat_id,msg_id,'\n*※ هاذا الامر يخص  '..Controller_Num(6)..' * ',"md",true)  
     end
     if ChannelJoin(msg) == false then
