@@ -1144,7 +1144,7 @@ for k,v in pairs(msg.content.member_user_ids) do
 local Info_User = LuaTele.getUser(v) 
 print(v)
 if v == tonumber(TheMEZO) then
-local N = (Redis:get(TheMEZO.."Name:Bot") or "كرستين")
+local N = (Redis:get(TheMEZO.."Name:Bot") or "ثور")
 photo = LuaTele.getUserProfilePhotos(TheMEZO)
 local bot = '🤖╖ أهلآ بك عزيزي أنا بوت '..N..'\n🌐╢ وظيفتي حماية المجموعات •\n✅╢ من التفليش والسب والاباحيه •\n⚡️╢ ارفعهُ » مشرف + اكتب تفعيل •\n⬆️╢ ثم قم بالنقر علي رفع المالك والأدمنيه •\n👮‍♂️╢ سيتم ترقيتك مالك في البوت •\n💫╢ تأكد » من اعطائي حذف الرسائل •\n✔╢ • لكي أعمل معك بشكل صحيح •\n⚽️╢ • تفعيل الألعاب + تفعيل الرفع • \n🙋‍♂️╢ اذا اردت تفعيل ردود السورس •\n'
 if photo.total_count > 0 then
@@ -6272,25 +6272,55 @@ end
 LuaTele.sendText(msg_chat_id,msg_id,'\n*◍ تم ترقيه - ('..y..') ادمنيه *',"md",true)  
 end
 
-if text == 'المالك' then
+if text == 'المالك' or text == 'المنشئ' then
 if msg.can_be_deleted_for_all_users == false then
-return LuaTele.sendText(msg_chat_id,msg_id,"\n*◍ عذرآ البوت ليس ادمن في المجموعه يرجى ترقيته وتفعيل الصلاحيات له *","md",true)  
+return LuaTele.sendText(msg_chat_id,msg_id,"\n*✘︙ عذرآ البوت ليس ادمن في  الجروب يرجى ترقيته وتفعيل الصلاحيات له *","md",true)  
+end
+if ChannelJoin(msg) == false then
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/'..Redis:get(TheMEZO ..'Channel:Join')}, },}}
+return LuaTele.sendText(msg.chat_id,msg.id,'*\n✘︙ عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 local Info_Members = LuaTele.getSupergroupMembers(msg_chat_id, "Administrators", "*", 0, 200)
 local List_Members = Info_Members.members
 for k, v in pairs(List_Members) do
 if Info_Members.members[k].status.luatele == "chatMemberStatusCreator" then
-local UserInfo = LuaTele.getUser(v.member_id.user_id)
-if UserInfo.first_name == "" then
-LuaTele.sendText(msg_chat_id,msg_id,"*◍ اوبس , المالك حسابه محذوف *","md",true)  
+local  ban = LuaTele.getUser(v.member_id.user_id)
+if  ban.first_name == "" then
+LuaTele.sendText(msg_chat_id,msg_id,"*✘︙ اوبس , المالك حسابه محذوف *","md",true)  
 return false
-end
-if UserInfo.username then
-Creator = "*◍ مالك المجموعه : @"..UserInfo.username.."*\n"
+end 
+local photo = LuaTele.getUserProfilePhotos( ban.id)
+local  bain = LuaTele.getUserFullInfo(Sudo_Id)
+if  bain.bio then
+Bio =  bain.bio
 else
-Creator = "◍ مالك المجموعه : *["..UserInfo.first_name.."](tg://user?id="..UserInfo.id..")\n"
+Bio = 'لا يوجد'
 end
-return LuaTele.sendText(msg_chat_id,msg_id,Creator,"md",true)  
+if ban.username then
+Creator = "* "..ban.first_name.."*\n"
+else
+Creator = "* ["..ban.first_name.."](tg://user?id="..ban.id..")*\n"
+end
+if ban.first_name then
+Creat = " "..ban.first_name.." "
+else
+Creat = " Developers Bot \n"
+end
+if photo.total_count > 0 then
+local TestText = "  ‹[ Owner Groups ]›\n— — — — — — — — —\n ✘︙*Owner Name* :  [".. ban.first_name.."](tg://user?id=".. ban.id..")\n✘︙ *Owner Bio* : [‹[ "..Bio.." ]›]"
+keyboardd = {} 
+keyboardd.inline_keyboard = {
+{
+{text = Creat, url = "https://t.me/"..ban.username..""},
+},
+}
+local msg_id = msg.id/2097152/0.5 
+return https.request("https://api.telegram.org/bot"..Token..'/sendPhoto?chat_id='..msg.chat_id..'&caption='..URL.escape(TestText)..'&photo='..photo.photos[1].sizes[#photo.photos[1].sizes].photo.remote.id..'&reply_to_message_id='..msg_id..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboardd))
+else
+local TestText = "- معلومات المالك : \n\n- [".. ban.first_name.."](tg://user?id=".. ban.id..")\n \n ["..Bio.."]"
+local msg_id = msg.id/2097152/0.5 
+return https.request("https://api.telegram.org/bot"..Token..'/sendMessage?chat_id=' .. msg.chat_id .. '&text=' .. URL.escape(TestText).."&reply_to_message_id="..msg_id.."&parse_mode=markdown")
+end
 end
 end
 end
@@ -6719,10 +6749,20 @@ end
 if text == "صورتي" then
 if Redis:get(TheMEZO.."Status:photo"..msg.chat_id) then
 local photo = LuaTele.getUserProfilePhotos(msg.sender.user_id)
+local ban = LuaTele.getUser(msg.sender.user_id)
+local ban_ns = '•●•●•●•●صورك●•●•●•●•'
 if photo.total_count > 0 then
-return LuaTele.sendPhoto(msg.chat_id, msg.id, photo.photos[1].sizes[#photo.photos[1].sizes].photo.remote.id,"*عدد صورك هو "..photo.total_count.." صوره*", "md")
-else
-return LuaTele.sendText(msg_chat_id,msg_id,'*◉ لا توجد صوره ف حسابك*',"md",true) 
+data = {} 
+data.inline_keyboard = {
+{
+{text = '- اخفاء الامر ', callback_data = msg.sender.user_id..'/ban88'}, 
+},
+{
+{text = '✯ • صورتك القادمه • ✯', callback_data= msg.sender.user_id..'/ban1'}, 
+},
+}
+local msgg = msg_id/2097152/0.5
+https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id=" .. msg_chat_id .. "&photo="..photo.photos[1].sizes[#photo.photos[1].sizes].photo.remote.id.."&caption=".. URL.escape(ban_ns).."&reply_to_message_id="..msgg.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(data))
 end
 end
 end
@@ -6804,6 +6844,15 @@ keyboard.inline_keyboard = {
 }
 local msg_id = msg.id/2097152/0.5
 https.request("https://api.telegram.org/bot"..Token..'/sendVoice?chat_id=' .. msg.chat_id .. '&voice=https://t.me/QQNNSX/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
+end
+if text == 'بيقول اي' or text == "؟؟" or text == "??" or text == "وش يقول" then 
+if tonumber(msg.reply_to_message_id) > 0 then
+local result = LuaTele.getMessage(msg.chat_id, msg.reply_to_message_id)
+if result.content.voice_note then 
+local rep = msg.id/2097152/0.5
+https.request("https://api.medooo.ml/leomedo/voiceRecognise?token="..Token.."&chat_id="..msg_chat_id.."&file_id="..result.content.voice_note.voice.remote.id.."&msg_id="..rep)
+end
+end
 end
 --------------------------------------------------------------------------------------------------------------
 if text == "قفل التكرار" then 
@@ -9811,28 +9860,55 @@ end
 Redis:del(TheMEZO..'MEZO:Texting:DevTheMEZO')
 return LuaTele.sendText(msg_chat_id,msg_id,'◍  تم حذف كليشه المطور')
 end
-if text == 'المطور' or text == 'مطور' then
-local TextingDevTheMEZO = Redis:get(TheMEZO..'MEZO:Texting:DevTheMEZO')
-if TextingDevTheMEZO then 
-return LuaTele.sendText(msg_chat_id,msg_id,TextingDevTheMEZO,"md",true)  
+if text == 'المالك' or text == 'المنشئ' then
+if msg.can_be_deleted_for_all_users == false then
+return LuaTele.sendText(msg_chat_id,msg_id,"\n*✘︙ عذرآ البوت ليس ادمن في  الجروب يرجى ترقيته وتفعيل الصلاحيات له *","md",true)  
+end
+if ChannelJoin(msg) == false then
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/'..Redis:get(TheMEZO ..'Channel:Join')}, },}}
+return LuaTele.sendText(msg.chat_id,msg.id,'*\n✘︙ عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
+end
+local Info_Members = LuaTele.getSupergroupMembers(msg_chat_id, "Administrators", "*", 0, 200)
+local List_Members = Info_Members.members
+for k, v in pairs(List_Members) do
+if Info_Members.members[k].status.luatele == "chatMemberStatusCreator" then
+local  ban = LuaTele.getUser(v.member_id.user_id)
+if  ban.first_name == "" then
+LuaTele.sendText(msg_chat_id,msg_id,"*✘︙ اوبس , المالك حسابه محذوف *","md",true)  
+return false
+end 
+local photo = LuaTele.getUserProfilePhotos( ban.id)
+local  bain = LuaTele.getUserFullInfo(Sudo_Id)
+if  bain.bio then
+Bio =  bain.bio
 else
-local photo = LuaTele.getUserProfilePhotos(Sudo_Id)
+Bio = 'لا يوجد'
+end
+if ban.username then
+Creator = "* "..ban.first_name.."*\n"
+else
+Creator = "* ["..ban.first_name.."](tg://user?id="..ban.id..")*\n"
+end
+if ban.first_name then
+Creat = " "..ban.first_name.." "
+else
+Creat = " Developers Bot \n"
+end
 if photo.total_count > 0 then
-local mrt = LuaTele.getUser(Sudo_Id)
-local T = '* ‹ 𝐃𝐞𝐯𝐞𝐥𝐨𝐩𝐞𝐫𝐬 𝐁𝐨𝐭 ›\n— — — — — — — — —\n‹ 𝐃𝐞𝐯 𝐍𝐚𝐦𝐞 › *['..mrt.first_name..'](tg://user?id='..mrt.id..')*\n*'
-keyboard = {} 
-keyboard.inline_keyboard = {
+local TestText = "  ‹[ Owner Groups ]›\n— — — — — — — — —\n ✘︙*Owner Name* :  [".. ban.first_name.."](tg://user?id=".. ban.id..")\n✘︙ *Owner Bio* : [‹[ "..Bio.." ]›]"
+keyboardd = {} 
+keyboardd.inline_keyboard = {
 {
-{text = ' '..mrt.first_name..' ', url = "https://t.me/"..mrt.username}
-},
-{
-{text = '𖡶 • أضف البوت إلي مجموعتك • 𖡶', url = 't.me/'..UserBot..'?startgroup=new'}, 
+{text = Creat, url = "https://t.me/"..ban.username..""},
 },
 }
-local msgg = msg_id/2097152/0.5
-https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id=" .. msg_chat_id .. "&photo="..photo.photos[1].sizes[#photo.photos[1].sizes].photo.remote.id.."&caption=".. URL.escape(T).."&reply_to_message_id="..msgg.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+local msg_id = msg.id/2097152/0.5 
+return https.request("https://api.telegram.org/bot"..Token..'/sendPhoto?chat_id='..msg.chat_id..'&caption='..URL.escape(TestText)..'&photo='..photo.photos[1].sizes[#photo.photos[1].sizes].photo.remote.id..'&reply_to_message_id='..msg_id..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboardd))
 else
-return LuaTele.sendText(msg_chat_id,msg_id,'\n* ◉ مطور البوت : {*['..mrt.first_name..'](tg://user?id='..mrt.id..')*}*',"md",true)  
+local TestText = "- معلومات المالك : \n\n- [".. ban.first_name.."](tg://user?id=".. ban.id..")\n \n ["..Bio.."]"
+local msg_id = msg.id/2097152/0.5 
+return https.request("https://api.telegram.org/bot"..Token..'/sendMessage?chat_id=' .. msg.chat_id .. '&text=' .. URL.escape(TestText).."&reply_to_message_id="..msg_id.."&parse_mode=markdown")
+end
 end
 end
 end
@@ -12978,7 +13054,211 @@ LuaTele.deleteMessages(ChatId,{[1]= Msg_id})
 end
 end
 
+if Text and Text:match('(%d+)/ban0') then
+local UserId = Text:match('(%d+)/ban0')
+if tonumber(IdUser) == tonumber(UserId) then
+local photo = LuaTele.getUserProfilePhotos(IdUser)
+local ban = LuaTele.getUser(IdUser)
+if photo.total_count > 0 then
+local ban_ns = '✯•●•●•●•●صورك●•●•●•●•✯'
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = '- اخفاء الامر ', callback_data =IdUser..'/delAmr'}, 
+},
+{
+{text = '✯ • صورتك القادمه • ✯', callback_data =IdUser..'/ban1'},{text = '✯ • صورتك السابقه • ✯ ', callback_data =IdUser..'/delAmr'}, 
+},
+}
+LuaTele.deleteMessages(ChatId,{[1]= Msg_id})
+https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id=" .. ChatId .. "&photo="..photo.photos[1].sizes[#photo.photos[1].sizes].photo.remote.id.."&caption=".. URL.escape(ban_ns).."&reply_to_message_id=0&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+else
+return LuaTele.sendText(ChatId,Msg_id,'*𖥔 لا توجد صوره ف حسابك*',"md",true) 
+end
+end
+end
+if Text and Text:match('(%d+)/ban89') then
+local UserId = Text:match('(%d+)/ban89')
+if tonumber(IdUser) == tonumber(UserId) then
+local photo = LuaTele.getUserProfilePhotos(IdUser)
+local ban_ns = '✯•●•●•●•●صورك●•●•●•●•✯'
+if photo.total_count > 1 then
+GH = '* '..photo.photos[2].sizes[#photo.photos[1].sizes].photo.remote.id..'* '
+ban = JSON.encode(GH)
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = '- اخفاء الامر ', callback_data =IdUser..'/delAmr'}, 
+},
+}
+https.request("https://api.telegram.org/bot"..Token.."/editMessageMedia?chat_id="..ChatId.."&reply_to_message_id=0&media="..ban.."&caption=".. URL.escape(ban_ns).."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+else
+return LuaTele.sendText(ChatId,Msg_id,'*𖥔 لا توجد صوره ف حسابك*',"md",true) 
+end
+end
+end
+if Text and Text:match('(%d+)/ban1') then
+local UserId = Text:match('(%d+)/ban1')
+if tonumber(IdUser) == tonumber(UserId) then
+local photo = LuaTele.getUserProfilePhotos(IdUser)
+local ban = LuaTele.getUser(IdUser)
+if photo.total_count > 1 then
+local ban_ns = '✯•●•●•●•●صورك●•●•●•●•✯'
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = '- اخفاء الامر ', callback_data =IdUser..'/delAmr'}, 
+},
+{
+{text = '✯ • صورتك القادمه • ✯', callback_data =IdUser..'/ban2'},{text = '✯ • صورتك السابقه • ✯ ', callback_data =IdUser..'/ban0'}, 
+},
+}
+LuaTele.deleteMessages(ChatId,{[1]= Msg_id})
+https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id=" .. ChatId .. "&photo="..photo.photos[2].sizes[#photo.photos[1].sizes].photo.remote.id.."&caption=".. URL.escape(ban_ns).."&reply_to_message_id=0&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+else
+return LuaTele.sendText(ChatId,Msg_id,'*𖥔 لا توجد صوره ف حسابك*',"md",true) 
+end
+end
+end
+if Text and Text:match('(%d+)/ban2') then
+local UserId = Text:match('(%d+)/ban2')
+if tonumber(IdUser) == tonumber(UserId) then
+local photo = LuaTele.getUserProfilePhotos(IdUser)
+local ban = LuaTele.getUser(IdUser)
+if photo.total_count > 1 then
+local ban_ns = '✯•●•●•●•●صورك●•●•●•●•✯'
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = '- اخفاء الامر ', callback_data =IdUser..'/delAmr'}, 
+},
+{
+{text = '✯ • صورتك القادمه • ✯', callback_data =IdUser..'/ban3'},{text = '✯ • صورتك السابقه • ✯ ', callback_data =IdUser..'/ban1'}, 
+},
+}
+LuaTele.deleteMessages(ChatId,{[1]= Msg_id})
+https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id=" .. ChatId .. "&photo="..photo.photos[3].sizes[#photo.photos[1].sizes].photo.remote.id.."&caption=".. URL.escape(ban_ns).."&reply_to_message_id=0&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+else
+return LuaTele.sendText(ChatId,Msg_id,'*𖥔 لا توجد صوره ف حسابك*',"md",true) 
+end
+end
+end
+if Text and Text:match('(%d+)/ban3') then
+local UserId = Text:match('(%d+)/ban3')
+if tonumber(IdUser) == tonumber(UserId) then
+local photo = LuaTele.getUserProfilePhotos(IdUser)
+local ban = LuaTele.getUser(IdUser)
+if photo.total_count > 1 then
+local ban_ns = '✯•●•●•●•●صورك●•●•●•●•✯'
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = '- اخفاء الامر ', callback_data =IdUser..'/delAmr'}, 
+},
+{
+{text = '✯ • صورتك القادمه • ✯', callback_data =IdUser..'/ban4'},{text = '✯ • صورتك السابقه • ✯ ', callback_data =IdUser..'/ban2'}, 
+},
+}
+LuaTele.deleteMessages(ChatId,{[1]= Msg_id})
+https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id=" .. ChatId .. "&photo="..photo.photos[4].sizes[#photo.photos[1].sizes].photo.remote.id.."&caption=".. URL.escape(ban_ns).."&reply_to_message_id=0&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+else
+return LuaTele.sendText(ChatId,Msg_id,'*𖥔 لا توجد صوره ف حسابك*',"md",true) 
+end
+end
+end
+if Text and Text:match('(%d+)/ban4') then
+local UserId = Text:match('(%d+)/ban4')
+if tonumber(IdUser) == tonumber(UserId) then
+local photo = LuaTele.getUserProfilePhotos(IdUser)
+local ban = LuaTele.getUser(IdUser)
+if photo.total_count > 1 then
+local ban_ns = '✯•●•●•●•●صورك●•●•●•●•✯'
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = '- اخفاء الامر ', callback_data =IdUser..'/delAmr'}, 
+},
+{
+{text = '✯ • صورتك القادمه • ✯', callback_data =IdUser..'/ban5'},{text = '✯ • صورتك السابقه • ✯ ', callback_data =IdUser..'/ban3'}, 
+},
+}
+LuaTele.deleteMessages(ChatId,{[1]= Msg_id})
+https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id=" .. ChatId .. "&photo="..photo.photos[5].sizes[#photo.photos[1].sizes].photo.remote.id.."&caption=".. URL.escape(ban_ns).."&reply_to_message_id=0&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+else
+return LuaTele.sendText(ChatId,Msg_id,'*𖥔 لا توجد صوره ف حسابك*',"md",true) 
+end
+end
+end
+if Text and Text:match('(%d+)/ban5') then
+local UserId = Text:match('(%d+)/ban5')
+if tonumber(IdUser) == tonumber(UserId) then
+local photo = LuaTele.getUserProfilePhotos(IdUser)
+local ban = LuaTele.getUser(IdUser)
+if photo.total_count > 1 then
+local ban_ns = '𝚑𝚎??𝚎 𝚊𝚛𝚎 𝚢𝚘𝚞𝚛 𝚙𝚑𝚘𝚝𝚘𝚜'
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = '- اخفاء الامر ', callback_data =IdUser..'/delAmr'}, 
+},
+{
+{text = '✯ • صورتك القادمه • ✯', callback_data =IdUser..'/ban6'},{text = '✯ • صورتك السابقه • ✯ ', callback_data =IdUser..'/ban4'}, 
+},
+}
+LuaTele.deleteMessages(ChatId,{[1]= Msg_id})
+https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id=" .. ChatId .. "&photo="..photo.photos[6].sizes[#photo.photos[1].sizes].photo.remote.id.."&caption=".. URL.escape(ban_ns).."&reply_to_message_id=0&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+else
+return LuaTele.sendText(ChatId,Msg_id,'*𖥔 لا توجد صوره ف حسابك*',"md",true) 
+end
+end
+end
+if Text and Text:match('(%d+)/ban6') then
+local UserId = Text:match('(%d+)/ban6')
+if tonumber(IdUser) == tonumber(UserId) then
+local photo = LuaTele.getUserProfilePhotos(IdUser)
+local ban = LuaTele.getUser(IdUser)
+if photo.total_count > 1 then
+local ban_ns = '✯•●•●•●•●صورك●•●•●•●•✯'
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = '- اخفاء الامر ', callback_data =IdUser..'/delAmr'}, 
+},
+{
+{text = '✯ • صورتك القادمه • ✯', callback_data =IdUser..'/ban7'},{text = '✯ • صورتك السابقه • ✯ ', callback_data =IdUser..'/ban5'}, 
+},
+}
+LuaTele.deleteMessages(ChatId,{[1]= Msg_id})
+https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id=" .. ChatId .. "&photo="..photo.photos[7].sizes[#photo.photos[1].sizes].photo.remote.id.."&caption=".. URL.escape(ban_ns).."&reply_to_message_id=0&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+else
+return LuaTele.sendText(ChatId,Msg_id,'*𖥔 لا توجد صوره ف حسابك*',"md",true) 
+end
+end
+end
 
+if Text and Text:match('(%d+)/ban7') then
+local UserId = Text:match('(%d+)/ban7')
+if tonumber(IdUser) == tonumber(UserId) then
+local photo = LuaTele.getUserProfilePhotos(IdUser)
+local ban = LuaTele.getUser(IdUser)
+if photo.total_count > 1 then
+local ban_ns = '✯•●•●•●•●صورك●•●•●•●•✯'
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = '- اخفاء الامر ', callback_data =IdUser..'/delAmr'}, 
+},
+{
+{text = '✯ • صورتك السابقه • ✯ ', callback_data =IdUser..'/ban0'}, 
+},
+}
+LuaTele.deleteMessages(ChatId,{[1]= Msg_id})
+https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id=" .. ChatId .. "&photo="..photo.photos[8].sizes[#photo.photos[1].sizes].photo.remote.id.."&caption=".. URL.escape(ban_ns).."&reply_to_message_id=0&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+else
+return LuaTele.sendText(ChatId,Msg_id,'*𖥔 لا توجد صوره ف حسابك*',"md",true) 
+end
+end
+end
 if Text and Text:match('/Mahibes(%d+)') then
 local GetMahibes = Text:match('/Mahibes(%d+)') 
 local NumMahibes = math.random(1,6)
