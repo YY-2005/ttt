@@ -6735,7 +6735,7 @@ sendText(msg_chat_id,Text,0,'md')
 end 
 end 
 end 
-end
+
 
 
 if text == "جمالي" or text == 'نسبه جمالي' then
