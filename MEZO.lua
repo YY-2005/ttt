@@ -6731,13 +6731,11 @@ Text = t:gsub('#all '..ttag..',','#all '..ttag..'\n')
 else 
 Text = t:gsub('#all,','#all\n')
 end
-sendText(msg_chat_id,Text,0,'md') 
+LuaTele.sendText(msg_chat_id,0,Text,"md",true) 
 end 
 end 
 end 
-
-
-
+end
 if text == "جمالي" or text == 'نسبه جمالي' then
 if Redis:get(TheMEZO.."Status:gamle"..msg.chat_id) then
 local photo = LuaTele.getUserProfilePhotos(msg.sender.user_id)
@@ -10354,7 +10352,7 @@ local T =[[
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = '𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱', url = "https://t.me/GB_THOR"}
+{text = '𝗦َ??ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱', url = "https://t.me/GB_THOR"}
 },
 }
 local msgg = msg_id/2097152/0.5
