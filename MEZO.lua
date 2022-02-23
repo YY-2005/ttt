@@ -6697,30 +6697,7 @@ end
 LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(msg.sender.user_id,"◍ تم فـتح جميع الاوامر").unLock,"md",true)  
 return false
 end 
-if text == "@all" or text == "تاك عام" or text == "all" then
-if not msg.Addictive then
-return LuaTele.sendText(msg_chat_id,msg_id,'\n*◍ هذا الامر يخص { '..Controller_Num(7)..' }* ',"md",true)  
-end
-local Info_Members = LuaTele.searchChatMembers(msg_chat_id, "*", 200)
-x = 0
-tags = 0
-local list = Info_Members.members
-for k, v in pairs(list) do
-local UserInfo = LuaTele.getUser(v.member_id.user_id)
-if x == 5 or x == tags or k == 0 then
-tags = x + 5
-listall = ""
-end
-x = x + 1
-if UserInfo.first_name ~= '' then
-listall = listall.." ["..UserInfo.first_name.."](tg://user?id="..UserInfo.id.."),"
-end
-if x == 5 or x == tags or k == 0 then
-LuaTele.sendText(msg_chat_id,msg_id,listall,"md",true)  
-end
-end
-end
-
+if text then
 if text:match("^all (.*)$") or text:match("^@all (.*)$") or text == "@all" or text == "all" then 
 local ttag = text:match("^all (.*)$") or text:match("^@all (.*)$") 
 if not msg.Addictive then
@@ -6759,6 +6736,8 @@ end
 end 
 end 
 end
+
+
 if text == "جمالي" or text == 'نسبه جمالي' then
 if Redis:get(TheMEZO.."Status:gamle"..msg.chat_id) then
 local photo = LuaTele.getUserProfilePhotos(msg.sender.user_id)
