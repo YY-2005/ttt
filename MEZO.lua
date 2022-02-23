@@ -6697,10 +6697,33 @@ end
 LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(msg.sender.user_id,"◍ تم فـتح جميع الاوامر").unLock,"md",true)  
 return false
 end 
+if text == "@all" or text == "تاك عام" or text == "all" then
+if not msg.Addictive then
+return LuaTele.sendText(msg_chat_id,msg_id,'\n*◍ هذا الامر يخص { '..Controller_Num(7)..' }* ',"md",true)  
+end
+local Info_Members = LuaTele.searchChatMembers(msg_chat_id, "*", 200)
+x = 0
+tags = 0
+local list = Info_Members.members
+for k, v in pairs(list) do
+local UserInfo = LuaTele.getUser(v.member_id.user_id)
+if x == 5 or x == tags or k == 0 then
+tags = x + 5
+listall = ""
+end
+x = x + 1
+if UserInfo.first_name ~= '' then
+listall = listall.." ["..UserInfo.first_name.."](tg://user?id="..UserInfo.id.."),"
+end
+if x == 5 or x == tags or k == 0 then
+LuaTele.sendText(msg_chat_id,msg_id,listall,"md",true)  
+end
+end
+end
 if text then
 if text:match("^all (.*)$") or text:match("^@all (.*)$") or text == "@all" or text == "all" then 
 local ttag = text:match("^all (.*)$") or text:match("^@all (.*)$") 
-if not msg.Addictive then
+if not msg.ControllerBot then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*※ هذا الامر يخص  '..Controller_Num(6)..' * ',"md",true)  
 end
 if Redis:get(TheMEZO.."lockalllll"..msg_chat_id) == "off" then
@@ -6852,9 +6875,8 @@ local msg_id = msg.id/2097152/0.5
 https.request("https://api.telegram.org/bot"..Token..'/sendVoice?chat_id=' .. msg.chat_id .. '&voice=https://t.me/QQNNSX/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
 end
 -- inline rad
--- inline rad
 if text == "حذف رد انلاين" then
-    if not msg.Addictive then
+    if not msg.Admin then
     return LuaTele.sendText(msg_chat_id,msg_id,'\n*※ هاذا الامر يخص  '..Controller_Num(7)..' * ',"md",true)  
     end
     if ChannelJoin(msg) == false then
@@ -6895,7 +6917,7 @@ if text == "حذف رد انلاين" then
   end
   end
   if text == ("مسح الردود الانلاين") then
-    if not msg.Addictive then
+    if not msg.Manger then
     return LuaTele.sendText(msg_chat_id,msg_id,'\n*※ هاذا الامر يخص  '..Controller_Num(6)..' * ',"md",true)  
     end
     if ChannelJoin(msg) == false then
@@ -6923,7 +6945,7 @@ if text == "حذف رد انلاين" then
     return LuaTele.sendText(msg_chat_id,msg_id,"※ تم مسح قائمه الانلاين","md",true)  
     end
   if text == "اضف رد انلاين" then
-    if not msg.Addictive then
+    if not msg.ControllerBot then
     return LuaTele.sendText(msg_chat_id,msg_id,'\n*※ هاذا الامر يخص  '..Controller_Num(7)..' * ',"md",true)  
     end
     Redis:set(TheMEZO.."Set:Manager:rd:inline"..msg.sender.user_id..":"..msg_chat_id,true)
@@ -6937,197 +6959,6 @@ if text == "حذف رد انلاين" then
     }
     return LuaTele.sendText(msg_chat_id,msg_id,"※ ارسل الان الكلمه لاضافتها في الردود ","md",false, false, false, false, reply_markup)
   end
-  if text and text:match("^(.*)$") and tonumber(msg.sender.user_id) ~= tonumber(TheMEZO) then
-    if Redis:get(TheMEZO.."Set:Manager:rd:inline"..msg.sender.user_id..":"..msg_chat_id) == "true" then
-    Redis:set(TheMEZO.."Set:Manager:rd:inline"..msg.sender.user_id..":"..msg_chat_id,"true1")
-    Redis:set(TheMEZO.."Text:Manager:inline"..msg.sender.user_id..":"..msg_chat_id, text)
-    Redis:del(TheMEZO.."Add:Rd:Manager:Gif:inline"..text..msg_chat_id)   
-    Redis:del(TheMEZO.."Add:Rd:Manager:Vico:inline"..text..msg_chat_id)   
-    Redis:del(TheMEZO.."Add:Rd:Manager:Stekrs:inline"..text..msg_chat_id)     
-    Redis:del(TheMEZO.."Add:Rd:Manager:Text:inline"..text..msg_chat_id)   
-    Redis:del(TheMEZO.."Add:Rd:Manager:Photo:inline"..text..msg_chat_id)
-    Redis:del(TheMEZO.."Add:Rd:Manager:Photoc:inline"..text..msg_chat_id)
-    Redis:del(TheMEZO.."Add:Rd:Manager:Video:inline"..text..msg_chat_id)
-    Redis:del(TheMEZO.."Add:Rd:Manager:Videoc:inline"..text..msg_chat_id)  
-    Redis:del(TheMEZO.."Add:Rd:Manager:File:inline"..text..msg_chat_id)
-    Redis:del(TheMEZO.."Add:Rd:Manager:video_note:inline"..text..msg_chat_id)
-    Redis:del(TheMEZO.."Add:Rd:Manager:Audio:inline"..text..msg_chat_id)
-    Redis:del(TheMEZO.."Add:Rd:Manager:Audioc:inline"..text..msg_chat_id)
-    Redis:del(TheMEZO.."Rd:Manager:inline:text"..text..msg_chat_id)
-    Redis:del(TheMEZO.."Rd:Manager:inline:link"..text..msg_chat_id)
-    Redis:sadd(TheMEZO.."List:Manager:inline"..msg_chat_id.."", text)
-    LuaTele.sendText(msg_chat_id,msg_id,[[
-    ↯︙ارسل لي الرد سواء كان 
-    ❨ ملف ، ملصق ، متحركه ، صوره
-     ، فيديو ، بصمه الفيديو ، بصمه ، صوت ، رساله ❩
-    ↯︙يمكنك اضافة الى النص ※
-    ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-     `#username` ↬ معرف المستخدم
-     `#msgs` ↬ عدد الرسائل
-     `#name` ↬ اسم المستخدم
-     `#id` ↬ ايدي المستخدم
-     `#stast` ↬ رتبة المستخدم
-     `#edit` ↬ عدد التعديلات
-    
-    ]],"md",true)  
-    return false
-    end
-    end
-  if Redis:get(TheMEZO.."Set:Manager:rd:inline"..msg.sender.user_id..":"..msg_chat_id) == "true1" and tonumber(msg.sender.user_id) ~= tonumber(TheMEZO) then
-  Redis:del(TheMEZO.."Set:Manager:rd:inline"..msg.sender.user_id..":"..msg_chat_id)
-  Redis:set(TheMEZO.."Set:Manager:rd:inline"..msg.sender.user_id..":"..msg_chat_id,"set_inline")
-  if text or msg.content.video_note or msg.content.document or msg.content.audio or msg.content.video or msg.content.voice_note or msg.content.sticker or msg.content.animation or msg.content.photo then
-  local anubis = Redis:get(TheMEZO.."Text:Manager:inline"..msg.sender.user_id..":"..msg_chat_id)
-  if msg.content.text then   
-  text = text:gsub('"',"") 
-  text = text:gsub('"',"") 
-  text = text:gsub("`","") 
-  text = text:gsub("*","") 
-  Redis:set(TheMEZO.."Add:Rd:Manager:Text:inline"..anubis..msg_chat_id, text)
-  elseif msg.content.sticker then   
-  Redis:set(TheMEZO.."Add:Rd:Manager:Stekrs:inline"..anubis..msg_chat_id, msg.content.sticker.sticker.remote.id)  
-  elseif msg.content.voice_note then  
-  Redis:set(TheMEZO.."Add:Rd:Manager:Vico:inline"..anubis..msg_chat_id, msg.content.voice_note.voice.remote.id)  
-  elseif msg.content.audio then
-  Redis:set(TheMEZO.."Add:Rd:Manager:Audio:inline"..anubis..msg_chat_id, msg.content.audio.audio.remote.id)  
-  Redis:set(TheMEZO.."Add:Rd:Manager:Audioc:inline"..anubis..msg_chat_id, msg.content.caption.text)  
-  elseif msg.content.document then
-  Redis:set(TheMEZO.."Add:Rd:Manager:File:inline"..anubis..msg_chat_id, msg.content.document.document.remote.id)  
-  elseif msg.content.animation then
-  Redis:set(TheMEZO.."Add:Rd:Manager:Gif:inline"..anubis..msg_chat_id, msg.content.animation.animation.remote.id)  
-  elseif msg.content.video_note then
-  Redis:set(TheMEZO.."Add:Rd:Manager:video_note:inline"..anubis..msg_chat_id, msg.content.video_note.video.remote.id)  
-  elseif msg.content.video then
-  Redis:set(TheMEZO.."Add:Rd:Manager:Video:inline"..anubis..msg_chat_id, msg.content.video.video.remote.id)  
-  Redis:set(TheMEZO.."Add:Rd:Manager:Videoc:inline"..anubis..msg_chat_id, msg.content.caption.text)  
-  elseif msg.content.photo then
-  if msg.content.photo.sizes[1].photo.remote.id then
-  idPhoto = msg.content.photo.sizes[1].photo.remote.id
-  elseif msg.content.photo.sizes[2].photo.remote.id then
-  idPhoto = msg.content.photo.sizes[2].photo.remote.id
-  elseif msg.content.photo.sizes[3].photo.remote.id then
-  idPhoto = msg.content.photo.sizes[3].photo.remote.id
-  end
-  Redis:set(TheMEZO.."Add:Rd:Manager:Photo:inline"..anubis..msg_chat_id, idPhoto)  
-  Redis:set(TheMEZO.."Add:Rd:Manager:Photoc:inline"..anubis..msg_chat_id, msg.content.caption.text)  
-  end
-  LuaTele.sendText(msg_chat_id,msg_id,"※ الان ارسل الكلام داخل الزر","md",true)  
-  return false  
-  end  
-  end
-  if text and Redis:get(TheMEZO.."Set:Manager:rd:inline"..msg.sender.user_id..":"..msg_chat_id) == "set_inline" then
-  Redis:set(TheMEZO.."Set:Manager:rd:inline"..msg.sender.user_id..":"..msg_chat_id, "set_link")
-  local anubis = Redis:get(TheMEZO.."Text:Manager:inline"..msg.sender.user_id..":"..msg_chat_id)
-  Redis:set(TheMEZO.."Rd:Manager:inline:text"..anubis..msg_chat_id, text)
-  LuaTele.sendText(msg_chat_id,msg_id,"※ الان ارسل الرابط","md",true)  
-  return false  
-  end
-  if text and Redis:get(TheMEZO.."Set:Manager:rd:inline"..msg.sender.user_id..":"..msg_chat_id) == "set_link" then
-  Redis:del(TheMEZO.."Set:Manager:rd:inline"..msg.sender.user_id..":"..msg_chat_id)
-  local anubis = Redis:get(TheMEZO.."Text:Manager:inline"..msg.sender.user_id..":"..msg_chat_id)
-  Redis:set(TheMEZO.."Rd:Manager:inline:link"..anubis..msg_chat_id, text)
-  LuaTele.sendText(msg_chat_id,msg_id,"※ تم اضافه الرد بنجاح","md",true)  
-  return false  
-  end
-  if text and not Redis:get(TheMEZO.."Status:Reply:inline"..msg_chat_id) then
-  local btext = Redis:get(TheMEZO.."Rd:Manager:inline:text"..text..msg_chat_id)
-  local blink = Redis:get(TheMEZO.."Rd:Manager:inline:link"..text..msg_chat_id)
-  local anemi = Redis:get(TheMEZO.."Add:Rd:Manager:Gif:inline"..text..msg_chat_id)   
-  local veico = Redis:get(TheMEZO.."Add:Rd:Manager:Vico:inline"..text..msg_chat_id)   
-  local stekr = Redis:get(TheMEZO.."Add:Rd:Manager:Stekrs:inline"..text..msg_chat_id)     
-  local Texingt = Redis:get(TheMEZO.."Add:Rd:Manager:Text:inline"..text..msg_chat_id)   
-  local photo = Redis:get(TheMEZO.."Add:Rd:Manager:Photo:inline"..text..msg_chat_id)
-  local photoc = Redis:get(TheMEZO.."Add:Rd:Manager:Photoc:inline"..text..msg_chat_id)
-  local video = Redis:get(TheMEZO.."Add:Rd:Manager:Video:inline"..text..msg_chat_id)
-  local videoc = Redis:get(TheMEZO.."Add:Rd:Manager:Videoc:inline"..text..msg_chat_id)  
-  local document = Redis:get(TheMEZO.."Add:Rd:Manager:File:inline"..text..msg_chat_id)
-  local audio = Redis:get(TheMEZO.."Add:Rd:Manager:Audio:inline"..text..msg_chat_id)
-  local audioc = Redis:get(TheMEZO.."Add:Rd:Manager:Audioc:inline"..text..msg_chat_id)
-  local video_note = Redis:get(TheMEZO.."Add:Rd:Manager:video_note:inline"..text..msg_chat_id)
-  local reply_markup = LuaTele.replyMarkup{
-    type = 'inline',
-    data = {
-    {
-    {text = btext , url = blink},
-    },
-    }
-    }
-  if Texingt then 
-  local UserInfo = LuaTele.getUser(msg.sender.user_id)
-  local NumMsg = Redis:get(TheMEZO..'Num:Message:User'..msg_chat_id..':'..msg.sender.user_id) or 0
-  local TotalMsg = Total_message(NumMsg) 
-  local Status_Gps = msg.Name_Controller
-  local NumMessageEdit = Redis:get(TheMEZO..'Num:Message:Edit'..msg_chat_id..msg.sender.user_id) or 0
-  local Texingt = Texingt:gsub('#username',(UserInfo.username or 'لا يوجد')) 
-  local Texingt = Texingt:gsub('#name',UserInfo.first_name)
-  local Texingt = Texingt:gsub('#id',msg.sender.user_id)
-  local Texingt = Texingt:gsub('#edit',NumMessageEdit)
-  local Texingt = Texingt:gsub('#msgs',NumMsg)
-  local Texingt = Texingt:gsub('#stast',Status_Gps)
-  LuaTele.sendText(msg_chat_id,msg_id,'['..Texingt..']',"md",false, false, false, false, reply_markup)  
-  end
-  if video_note then
-  LuaTele.sendVideoNote(msg_chat_id, msg.id, video_note, nil, nil, nil, nil, nil, nil, nil, reply_markup)
-  end
-  if photo then
-  LuaTele.sendPhoto(msg.chat_id, msg.id, photo,photoc,"md", true, nil, nil, nil, nil, nil, nil, nil, nil, reply_markup )
-  end  
-  if stekr then 
-  LuaTele.sendSticker(msg_chat_id, msg.id, stekr,nil,nil,nil,nil,nil,nil,nil,reply_markup)
-  end
-  if veico then 
-  LuaTele.sendVoiceNote(msg_chat_id, msg.id, veico, '', 'md',nil, nil, nil, nil, reply_markup)
-  end
-  if video then 
-  LuaTele.sendVideo(msg_chat_id, msg.id, video, videoc, "md", true, nil, nil, nil, nil, nil, nil, nil, nil, nil, reply_markup)
-  end
-  if anemi then 
-  LuaTele.sendAnimation(msg_chat_id,msg.id, anemi, '', 'md', nil, nil, nil, nil, nil, nil, nil, nil,reply_markup)
-  end
-  if document then
-  LuaTele.sendDocument(msg_chat_id, msg.id, document, '', 'md',nil, nil, nil, nil,nil, reply_markup)
-  end  
-  if audio then
-  LuaTele.sendAudio(msg_chat_id, msg.id, audio, audioc, "md", nil, nil, nil, nil, nil, nil, nil, nil,reply_markup) 
-  end
-  end
-  if text == ("الردود الانلاين") then
-    if not msg.Addictive then
-    return LuaTele.sendText(msg_chat_id,msg_id,'\n*※ هاذا الامر يخص  '..Controller_Num(6)..' * ',"md",true)  
-    end
-    if ChannelJoin(msg) == false then
-    local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/otlop12'}, },}}
-    return LuaTele.sendText(msg.chat_id,msg.id,'*\n※ عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
-    end
-    local list = Redis:smembers(TheMEZO.."List:Manager:inline"..msg_chat_id.."")
-    text = "※ قائمه الردود الانلاين \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
-    for k,v in pairs(list) do
-    if Redis:get(TheMEZO.."Add:Rd:Manager:Gif:inline"..v..msg_chat_id) then
-    db = "متحركه ※"
-    elseif Redis:get(TheMEZO.."Add:Rd:Manager:Vico:inline"..v..msg_chat_id) then
-    db = "بصمه ※"
-    elseif Redis:get(TheMEZO.."Add:Rd:Manager:Stekrs:inline"..v..msg_chat_id) then
-    db = "ملصق ※"
-    elseif Redis:get(TheMEZO.."Add:Rd:Manager:Text:inline"..v..msg_chat_id) then
-    db = "رساله ※"
-    elseif Redis:get(TheMEZO.."Add:Rd:Manager:Photo:inline"..v..msg_chat_id) then
-    db = "صوره ※"
-    elseif Redis:get(TheMEZO.."Add:Rd:Manager:Video:inline"..v..msg_chat_id) then
-    db = "فيديو ※"
-    elseif Redis:get(TheMEZO.."Add:Rd:Manager:File:inline"..v..msg_chat_id) then
-    db = "ملف ※"
-    elseif Redis:get(TheMEZO.."Add:Rd:Manager:Audio:inline"..v..msg_chat_id) then
-    db = "اغنيه ※"
-    elseif Redis:get(TheMEZO.."Add:Rd:Manager:video_note:inline"..v..msg_chat_id) then
-    db = "بصمه فيديو ※"
-    end
-    text = text..""..k.." » {"..v.."} » {"..db.."}\n"
-    end
-    if #list == 0 then
-    text = "※ عذرا لا يوجد ردود انلاين في الجروب"
-    end
-    return LuaTele.sendText(msg_chat_id,msg_id,"["..text.."]","md",true)  
-    end
 
 --------------------------------------------------------------------------------------------------------------
 if text == "قفل التكرار" then 
@@ -10352,7 +10183,7 @@ local T =[[
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = '𝗦َ??ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱', url = "https://t.me/GB_THOR"}
+{text = '𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱', url = "https://t.me/GB_THOR"}
 },
 }
 local msgg = msg_id/2097152/0.5
@@ -13448,7 +13279,197 @@ local TextMahibesAgane = [[*
 return LuaTele.editMessageText(ChatId,Msg_id,TextMahibesAgane, 'md', true, false, reply_markup)
 end
 
-
+if text and text:match("^(.*)$") and tonumber(msg.sender.user_id) ~= tonumber(TheMEZO) then
+if Redis:get(TheMEZO.."Set:Manager:rd:inline"..msg.sender.user_id..":"..msg_chat_id) == "true" then
+    Redis:set(TheMEZO.."Set:Manager:rd:inline"..msg.sender.user_id..":"..msg_chat_id,"true1")
+    Redis:set(TheMEZO.."Text:Manager:inline"..msg.sender.user_id..":"..msg_chat_id, text)
+    Redis:del(TheMEZO.."Add:Rd:Manager:Gif:inline"..text..msg_chat_id)   
+    Redis:del(TheMEZO.."Add:Rd:Manager:Vico:inline"..text..msg_chat_id)   
+    Redis:del(TheMEZO.."Add:Rd:Manager:Stekrs:inline"..text..msg_chat_id)     
+    Redis:del(TheMEZO.."Add:Rd:Manager:Text:inline"..text..msg_chat_id)   
+    Redis:del(TheMEZO.."Add:Rd:Manager:Photo:inline"..text..msg_chat_id)
+    Redis:del(TheMEZO.."Add:Rd:Manager:Photoc:inline"..text..msg_chat_id)
+    Redis:del(TheMEZO.."Add:Rd:Manager:Video:inline"..text..msg_chat_id)
+    Redis:del(TheMEZO.."Add:Rd:Manager:Videoc:inline"..text..msg_chat_id)  
+    Redis:del(TheMEZO.."Add:Rd:Manager:File:inline"..text..msg_chat_id)
+    Redis:del(TheMEZO.."Add:Rd:Manager:video_note:inline"..text..msg_chat_id)
+    Redis:del(TheMEZO.."Add:Rd:Manager:Audio:inline"..text..msg_chat_id)
+    Redis:del(TheMEZO.."Add:Rd:Manager:Audioc:inline"..text..msg_chat_id)
+    Redis:del(TheMEZO.."Rd:Manager:inline:text"..text..msg_chat_id)
+    Redis:del(TheMEZO.."Rd:Manager:inline:link"..text..msg_chat_id)
+    Redis:sadd(TheMEZO.."List:Manager:inline"..msg_chat_id.."", text)
+    LuaTele.sendText(msg_chat_id,msg_id,[[
+    ↯︙ارسل لي الرد سواء كان 
+    ❨ ملف ، ملصق ، متحركه ، صوره
+     ، فيديو ، بصمه الفيديو ، بصمه ، صوت ، رساله ❩
+    ↯︙يمكنك اضافة الى النص ※
+    ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
+     `#username` ↬ معرف المستخدم
+     `#msgs` ↬ عدد الرسائل
+     `#name` ↬ اسم المستخدم
+     `#id` ↬ ايدي المستخدم
+     `#stast` ↬ رتبة المستخدم
+     `#edit` ↬ عدد التعديلات
+    
+    ]],"md",true)  
+    return false
+    end
+    end
+  if Redis:get(TheMEZO.."Set:Manager:rd:inline"..msg.sender.user_id..":"..msg_chat_id) == "true1" and tonumber(msg.sender.user_id) ~= tonumber(TheMEZO) then
+  Redis:del(TheMEZO.."Set:Manager:rd:inline"..msg.sender.user_id..":"..msg_chat_id)
+  Redis:set(TheMEZO.."Set:Manager:rd:inline"..msg.sender.user_id..":"..msg_chat_id,"set_inline")
+  if text or msg.content.video_note or msg.content.document or msg.content.audio or msg.content.video or msg.content.voice_note or msg.content.sticker or msg.content.animation or msg.content.photo then
+  local anubis = Redis:get(TheMEZO.."Text:Manager:inline"..msg.sender.user_id..":"..msg_chat_id)
+  if msg.content.text then   
+  text = text:gsub('"',"") 
+  text = text:gsub('"',"") 
+  text = text:gsub("`","") 
+  text = text:gsub("*","") 
+  Redis:set(TheMEZO.."Add:Rd:Manager:Text:inline"..anubis..msg_chat_id, text)
+  elseif msg.content.sticker then   
+  Redis:set(TheMEZO.."Add:Rd:Manager:Stekrs:inline"..anubis..msg_chat_id, msg.content.sticker.sticker.remote.id)  
+  elseif msg.content.voice_note then  
+  Redis:set(TheMEZO.."Add:Rd:Manager:Vico:inline"..anubis..msg_chat_id, msg.content.voice_note.voice.remote.id)  
+  elseif msg.content.audio then
+  Redis:set(TheMEZO.."Add:Rd:Manager:Audio:inline"..anubis..msg_chat_id, msg.content.audio.audio.remote.id)  
+  Redis:set(TheMEZO.."Add:Rd:Manager:Audioc:inline"..anubis..msg_chat_id, msg.content.caption.text)  
+  elseif msg.content.document then
+  Redis:set(TheMEZO.."Add:Rd:Manager:File:inline"..anubis..msg_chat_id, msg.content.document.document.remote.id)  
+  elseif msg.content.animation then
+  Redis:set(TheMEZO.."Add:Rd:Manager:Gif:inline"..anubis..msg_chat_id, msg.content.animation.animation.remote.id)  
+  elseif msg.content.video_note then
+  Redis:set(TheMEZO.."Add:Rd:Manager:video_note:inline"..anubis..msg_chat_id, msg.content.video_note.video.remote.id)  
+  elseif msg.content.video then
+  Redis:set(TheMEZO.."Add:Rd:Manager:Video:inline"..anubis..msg_chat_id, msg.content.video.video.remote.id)  
+  Redis:set(TheMEZO.."Add:Rd:Manager:Videoc:inline"..anubis..msg_chat_id, msg.content.caption.text)  
+  elseif msg.content.photo then
+  if msg.content.photo.sizes[1].photo.remote.id then
+  idPhoto = msg.content.photo.sizes[1].photo.remote.id
+  elseif msg.content.photo.sizes[2].photo.remote.id then
+  idPhoto = msg.content.photo.sizes[2].photo.remote.id
+  elseif msg.content.photo.sizes[3].photo.remote.id then
+  idPhoto = msg.content.photo.sizes[3].photo.remote.id
+  end
+  Redis:set(TheMEZO.."Add:Rd:Manager:Photo:inline"..anubis..msg_chat_id, idPhoto)  
+  Redis:set(TheMEZO.."Add:Rd:Manager:Photoc:inline"..anubis..msg_chat_id, msg.content.caption.text)  
+  end
+  LuaTele.sendText(msg_chat_id,msg_id,"※ الان ارسل الكلام داخل الزر","md",true)  
+  return false  
+  end  
+  end
+  if text and Redis:get(TheMEZO.."Set:Manager:rd:inline"..msg.sender.user_id..":"..msg_chat_id) == "set_inline" then
+  Redis:set(TheMEZO.."Set:Manager:rd:inline"..msg.sender.user_id..":"..msg_chat_id, "set_link")
+  local anubis = Redis:get(TheMEZO.."Text:Manager:inline"..msg.sender.user_id..":"..msg_chat_id)
+  Redis:set(TheMEZO.."Rd:Manager:inline:text"..anubis..msg_chat_id, text)
+  LuaTele.sendText(msg_chat_id,msg_id,"※ الان ارسل الرابط","md",true)  
+  return false  
+  end
+  if text and Redis:get(TheMEZO.."Set:Manager:rd:inline"..msg.sender.user_id..":"..msg_chat_id) == "set_link" then
+  Redis:del(TheMEZO.."Set:Manager:rd:inline"..msg.sender.user_id..":"..msg_chat_id)
+  local anubis = Redis:get(TheMEZO.."Text:Manager:inline"..msg.sender.user_id..":"..msg_chat_id)
+  Redis:set(TheMEZO.."Rd:Manager:inline:link"..anubis..msg_chat_id, text)
+  LuaTele.sendText(msg_chat_id,msg_id,"※ تم اضافه الرد بنجاح","md",true)  
+  return false  
+  end
+  if text and not Redis:get(TheMEZO.."Status:Reply:inline"..msg_chat_id) then
+  local btext = Redis:get(TheMEZO.."Rd:Manager:inline:text"..text..msg_chat_id)
+  local blink = Redis:get(TheMEZO.."Rd:Manager:inline:link"..text..msg_chat_id)
+  local anemi = Redis:get(TheMEZO.."Add:Rd:Manager:Gif:inline"..text..msg_chat_id)   
+  local veico = Redis:get(TheMEZO.."Add:Rd:Manager:Vico:inline"..text..msg_chat_id)   
+  local stekr = Redis:get(TheMEZO.."Add:Rd:Manager:Stekrs:inline"..text..msg_chat_id)     
+  local Texingt = Redis:get(TheMEZO.."Add:Rd:Manager:Text:inline"..text..msg_chat_id)   
+  local photo = Redis:get(TheMEZO.."Add:Rd:Manager:Photo:inline"..text..msg_chat_id)
+  local photoc = Redis:get(TheMEZO.."Add:Rd:Manager:Photoc:inline"..text..msg_chat_id)
+  local video = Redis:get(TheMEZO.."Add:Rd:Manager:Video:inline"..text..msg_chat_id)
+  local videoc = Redis:get(TheMEZO.."Add:Rd:Manager:Videoc:inline"..text..msg_chat_id)  
+  local document = Redis:get(TheMEZO.."Add:Rd:Manager:File:inline"..text..msg_chat_id)
+  local audio = Redis:get(TheMEZO.."Add:Rd:Manager:Audio:inline"..text..msg_chat_id)
+  local audioc = Redis:get(TheMEZO.."Add:Rd:Manager:Audioc:inline"..text..msg_chat_id)
+  local video_note = Redis:get(TheMEZO.."Add:Rd:Manager:video_note:inline"..text..msg_chat_id)
+  local reply_markup = LuaTele.replyMarkup{
+    type = 'inline',
+    data = {
+    {
+    {text = btext , url = blink},
+    },
+    }
+    }
+  if Texingt then 
+  local UserInfo = LuaTele.getUser(msg.sender.user_id)
+  local NumMsg = Redis:get(TheMEZO..'Num:Message:User'..msg_chat_id..':'..msg.sender.user_id) or 0
+  local TotalMsg = Total_message(NumMsg) 
+  local Status_Gps = msg.Name_Controller
+  local NumMessageEdit = Redis:get(TheMEZO..'Num:Message:Edit'..msg_chat_id..msg.sender.user_id) or 0
+  local Texingt = Texingt:gsub('#username',(UserInfo.username or 'لا يوجد')) 
+  local Texingt = Texingt:gsub('#name',UserInfo.first_name)
+  local Texingt = Texingt:gsub('#id',msg.sender.user_id)
+  local Texingt = Texingt:gsub('#edit',NumMessageEdit)
+  local Texingt = Texingt:gsub('#msgs',NumMsg)
+  local Texingt = Texingt:gsub('#stast',Status_Gps)
+  LuaTele.sendText(msg_chat_id,msg_id,'['..Texingt..']',"md",false, false, false, false, reply_markup)  
+  end
+  if video_note then
+  LuaTele.sendVideoNote(msg_chat_id, msg.id, video_note, nil, nil, nil, nil, nil, nil, nil, reply_markup)
+  end
+  if photo then
+  LuaTele.sendPhoto(msg.chat_id, msg.id, photo,photoc,"md", true, nil, nil, nil, nil, nil, nil, nil, nil, reply_markup )
+  end  
+  if stekr then 
+  LuaTele.sendSticker(msg_chat_id, msg.id, stekr,nil,nil,nil,nil,nil,nil,nil,reply_markup)
+  end
+  if veico then 
+  LuaTele.sendVoiceNote(msg_chat_id, msg.id, veico, '', 'md',nil, nil, nil, nil, reply_markup)
+  end
+  if video then 
+  LuaTele.sendVideo(msg_chat_id, msg.id, video, videoc, "md", true, nil, nil, nil, nil, nil, nil, nil, nil, nil, reply_markup)
+  end
+  if anemi then 
+  LuaTele.sendAnimation(msg_chat_id,msg.id, anemi, '', 'md', nil, nil, nil, nil, nil, nil, nil, nil,reply_markup)
+  end
+  if document then
+  LuaTele.sendDocument(msg_chat_id, msg.id, document, '', 'md',nil, nil, nil, nil,nil, reply_markup)
+  end  
+  if audio then
+  LuaTele.sendAudio(msg_chat_id, msg.id, audio, audioc, "md", nil, nil, nil, nil, nil, nil, nil, nil,reply_markup) 
+  end
+  end
+  if text == ("الردود الانلاين") then
+    if not msg.ControllerBot then
+    return LuaTele.sendText(msg_chat_id,msg_id,'\n*※ هاذا الامر يخص  '..Controller_Num(6)..' * ',"md",true)  
+    end
+    if ChannelJoin(msg) == false then
+    local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/otlop12'}, },}}
+    return LuaTele.sendText(msg.chat_id,msg.id,'*\n※ عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
+    end
+    local list = Redis:smembers(TheMEZO.."List:Manager:inline"..msg_chat_id.."")
+    text = "※ قائمه الردود الانلاين \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+    for k,v in pairs(list) do
+    if Redis:get(TheMEZO.."Add:Rd:Manager:Gif:inline"..v..msg_chat_id) then
+    db = "متحركه ※"
+    elseif Redis:get(TheMEZO.."Add:Rd:Manager:Vico:inline"..v..msg_chat_id) then
+    db = "بصمه ※"
+    elseif Redis:get(TheMEZO.."Add:Rd:Manager:Stekrs:inline"..v..msg_chat_id) then
+    db = "ملصق ※"
+    elseif Redis:get(TheMEZO.."Add:Rd:Manager:Text:inline"..v..msg_chat_id) then
+    db = "رساله ※"
+    elseif Redis:get(TheMEZO.."Add:Rd:Manager:Photo:inline"..v..msg_chat_id) then
+    db = "صوره ※"
+    elseif Redis:get(TheMEZO.."Add:Rd:Manager:Video:inline"..v..msg_chat_id) then
+    db = "فيديو ※"
+    elseif Redis:get(TheMEZO.."Add:Rd:Manager:File:inline"..v..msg_chat_id) then
+    db = "ملف ※"
+    elseif Redis:get(TheMEZO.."Add:Rd:Manager:Audio:inline"..v..msg_chat_id) then
+    db = "اغنيه ※"
+    elseif Redis:get(TheMEZO.."Add:Rd:Manager:video_note:inline"..v..msg_chat_id) then
+    db = "بصمه فيديو ※"
+    end
+    text = text..""..k.." » {"..v.."} » {"..db.."}\n"
+    end
+    if #list == 0 then
+    text = "※ عذرا لا يوجد ردود انلاين في الجروب"
+    end
+    return LuaTele.sendText(msg_chat_id,msg_id,"["..text.."]","md",true)  
+    end
     
 if Text and Text:match('(%d+)/mp3(.*)') then
 local UserId = {Text:match('(%d+)/mp3(.*)')}
