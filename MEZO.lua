@@ -6721,7 +6721,6 @@ end
 end
 end
 if text then
-if text then
 if text:match("^all (.*)$") or text:match("^@all (.*)$") or text == "@all" or text == "all" then 
 local ttag = text:match("^all (.*)$") or text:match("^@all (.*)$") 
 if not msg.Addictive then
