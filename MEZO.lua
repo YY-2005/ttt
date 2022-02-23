@@ -6726,7 +6726,7 @@ local ttag = text:match("^all (.*)$") or text:match("^@all (.*)$")
 if not msg.Addictive then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*※ هذا الامر يخص  '..Controller_Num(6)..' * ',"md",true)  
 end
-if Redis:get(Fast.."lockalllll"..msg_chat_id) == "off" then
+if Redis:get(TheMEZO.."lockalllll"..msg_chat_id) == "off" then
 return LuaTele.sendText(msg_chat_id,msg_id,'*※ تم تعطيل @all من قبل المدراء*',"md",true)  
 end
 local Info_Members = LuaTele.searchChatMembers(msg_chat_id, "*", 10000)
