@@ -6698,7 +6698,45 @@ LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(msg.sender.user_id,"◍ تم ف
 return false
 end 
 
-
+if text then
+if text:match("^all (.*)$") or text:match("^@all (.*)$") or text == "@all" or text == "all" then 
+local ttag = text:match("^all (.*)$") or text:match("^@all (.*)$") 
+if not msg.Addictive then
+return LuaTele.sendText(msg_chat_id,msg_id,'\n*※ هذا الامر يخص  '..Controller_Num(6)..' * ',"md",true)  
+end
+if Redis:get(TheMEZO.."lockalllll"..msg_chat_id) == "off" then
+return LuaTele.sendText(msg_chat_id,msg_id,'*※ تم تعطيل @all من قبل المدراء*',"md",true)  
+end
+local Info_Members = LuaTele.searchChatMembers(msg_chat_id, "*", 10000)
+x = 0 
+tags = 0 
+local list = Info_Members.members
+for k, v in pairs(list) do 
+local data = LuaTele.getUser(v.member_id.user_id)
+if x == 5 or x == tags or k == 0 then 
+tags = x + 5 
+if ttag then
+t = "#all "..ttag.."" 
+else
+t = "#all "
+end
+end 
+x = x + 1 
+tagname = data.first_name
+tagname = tagname:gsub("]","") 
+tagname = tagname:gsub("[[]","") 
+t = t..", ["..tagname.."](tg://user?id="..v.member_id.user_id..")" 
+if x == 5 or x == tags or k == 0 then 
+if ttag then
+Text = t:gsub('#all '..ttag..',','#all '..ttag..'\n') 
+else 
+Text = t:gsub('#all,','#all\n')
+end
+sendText(msg_chat_id,Text,0,'md') 
+end 
+end 
+end 
+end
 if text == "جمالي" or text == 'نسبه جمالي' then
 if Redis:get(TheMEZO.."Status:gamle"..msg.chat_id) then
 local photo = LuaTele.getUserProfilePhotos(msg.sender.user_id)
