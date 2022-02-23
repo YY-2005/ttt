@@ -6720,7 +6720,7 @@ LuaTele.sendText(msg_chat_id,msg_id,listall,"md",true)
 end
 end
 end
-if text then
+
 if text:match("^all (.*)$") or text:match("^@all (.*)$") or text == "@all" or text == "all" then 
 local ttag = text:match("^all (.*)$") or text:match("^@all (.*)$") 
 if not msg.Addictive then
