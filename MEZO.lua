@@ -4619,11 +4619,11 @@ end
 
 if Text == '/leftz@' then
 LuaTele.editMessageText(ChatId,Msg_id,"*✘︙ ارسل الكلمه لزخرفتها عربي او انجلش*","md",true) 
-Redis:set(best.."zhrfa"..IdUser,"sendzh") 
+Redis:set(TheMEZO.."zhrfa"..IdUser,"sendzh") 
 end 
 if Text == '/leftz@' then
 LuaTele.editMessageText(ChatId,Msg_id,"*✘︙ ارسل الكلمه لزخرفتها عربي او انجلش*","md",true) 
-Redis:set(best.."zhrfa"..IdUser,"sendzh") 
+Redis:set(TheMEZO.."zhrfa"..IdUser,"sendzh") 
 end 
 
 if text and text:match("^(.*)$") then
@@ -4965,7 +4965,7 @@ io.popen('curl -s "'..httpsCurl..'"')
 end
 
 ---زخرفة ----
-if Redis:get(best.."zhrfa"..msg.sender.user_id) == "sendzh" then
+if Redis:get(TheMEZO.."zhrfa"..msg.sender.user_id) == "sendzh" then
 zh = https.request('https://apiabs.ml/zrf.php?abs='..URL.escape(text)..'')
 zx = JSON.decode(zh)
 t = "\n ✘︙قائمه الزخرفه \n———————×———————\n"
@@ -4975,7 +4975,7 @@ i = i + 1
 t = t..i.."- `"..v.."` \n"
 end
 LuaTele.sendText(msg_chat_id,msg_id,t,"md",true) 
-Redis:del(best.."zhrfa"..msg.sender.user_id) 
+Redis:del(TheMEZO.."zhrfa"..msg.sender.user_id) 
 end
 
 
