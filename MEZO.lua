@@ -4910,20 +4910,7 @@ end
 local gmria = Redis:scard(TheMEZO.."MEZO:allM"..msg.chat_id)  
  LuaTele.sendText(msg_chat_id,msg_id,"◍ عدد الميديا الموجود هو (* "..gmria.." *)","md")
 end
-if text == "زخرفه" or text == "زخرف"  then
-if msg.can_be_deleted_for_all_users == false then
-return LuaTele.sendText(msg_chat_id,msg_id,"\n*✘︙ عذرآ البوت ليس ادمن في الجروب يرجى ترقيته وتفعيل الصلاحيات له *","md",true)  
-end
-local reply_markup = LuaTele.replyMarkup{
-type = 'inline',
-data = {
-{
-{text = ' زخرفه ',  data ='/leftz@'},
-},
-}
-}
-return LuaTele.sendText(msg.chat_id,msg.id,'*\nاليك القوائم الزخرف  اضفط وزخرف*',"md",false, false, false, false, reply_markup)
-end
+
 if text == "تعطيل المسح التلقائي" then        
 if not msg.TheBasics then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*◍ هاذا الامر يخص { '..Controller_Num(4)..' }* ',"md",true)  
@@ -4968,14 +4955,30 @@ end
 if Redis:get(TheMEZO.."zhrfa"..msg.sender.user_id) == "sendzh" then
 zh = https.request('https://apiabs.ml/zrf.php?abs='..URL.escape(text)..'')
 zx = JSON.decode(zh)
-t = "\n ✘︙قائمه الزخرفه \n———————×———————\n"
+t = "\n* ✧ قائمه الزخرفه ⇧⇩*\n*⩹┉┉┉┉⊶❲𖥳 𝙏𝙃𝙊𝙍 𓅔 𖥳❳⊷┉┉┉┉⩺*\n* أضغط علي الاسم لا يتم النسخ ✧ *\n"
 i = 0
 for k,v in pairs(zx.ok) do
 i = i + 1
-t = t..i.."- `"..v.."` \n"
+t = t..i.."- "..v.." \n"
 end
 LuaTele.sendText(msg_chat_id,msg_id,t,"md",true) 
 Redis:del(TheMEZO.."zhrfa"..msg.sender.user_id) 
+end
+if text == "زخرفه" or text == "زخرفة" then
+LuaTele.sendText(msg_chat_id,msg_id,"* ✧ ارسل الكلمه لزخرفتها عربي او انجلش*","md",true) 
+Redis:set(TheMEZO.."zhrfa"..msg.sender.user_id,"sendzh") 
+end
+if text and text:match("^زخرفه (.*)$") then
+local TextZhrfa = text:match("^زخرفه (.*)$")
+zh = https.request('https://apiabs.ml/zrf.php?abs='..URL.escape(TextZhrfa)..'')
+zx = JSON.decode(zh)
+t = "\n* ✧ قائمه الزخرفه ⇧⇩*\n*⩹┉┉┉┉⊶❲𖥳𝙏𝙃𝙊𝙍 𓅔 𖥳❳⊷┉┉┉┉⩺*\n* أضغط علي الاسم لا يتم النسخ ✧ *\n"
+i = 0
+for k,v in pairs(zx.ok) do
+i = i + 1
+t = t..i.."- "..v.." \n"
+end
+LuaTele.sendText(msg_chat_id,msg_id,t,"md",true) 
 end
 
 
@@ -5143,7 +5146,7 @@ end
 if Controller(msg_chat_id,UserId_Info.id) == 'DEV • BARLO' then
 return LuaTele.sendText(msg_chat_id,msg_id,"\n* ❍┃ عذرا لا تستطيع حظر عام⟦ "..Controller(msg_chat_id,UserId_Info.id).." ⟧*","md",true)  
 end
-if Controller(msg_chat_id,UserId_Info.id) == 'بارلو باشا' then
+if Controller(msg_chat_id,UserId_Info.id) == 'المبرمج سوريا' then
 return LuaTele.sendText(msg_chat_id,msg_id,"\n* ❍┃ عذرا لا تستطيع حظر عام⟦ "..Controller(msg_chat_id,UserId_Info.id).." ⟧*","md",true)  
 end
 if Controller(msg_chat_id,UserId_Info.id) == 'DEV • CRISTIN' then
@@ -5218,7 +5221,7 @@ end
 if Controller(msg_chat_id,UserId_Info.id) == 'DEV • BARLO' then
 return LuaTele.sendText(msg_chat_id,msg_id,"\n* ❍┃ عذرا لا تستطيع كتم عام⟦ "..Controller(msg_chat_id,UserId_Info.id).." ⟧*","md",true)  
 end
-if Controller(msg_chat_id,UserId_Info.id) == 'بارلو باشا' then
+if Controller(msg_chat_id,UserId_Info.id) == 'المبرمج سوريا' then
 return LuaTele.sendText(msg_chat_id,msg_id,"\n* ❍┃ عذرا لا تستطيع كتم عام⟦ "..Controller(msg_chat_id,UserId_Info.id).." ⟧*","md",true)  
 end
 if Controller(msg_chat_id,UserId_Info.id) == 'DEV • CRISTIN' then
