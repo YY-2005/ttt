@@ -4617,6 +4617,15 @@ LuaTele.editMessageText(ChatId,Msg_id,"*𖥔 تم رفض الزواج من ال�
 end
 end
 
+if Text == '/leftz@' then
+LuaTele.editMessageText(ChatId,Msg_id,"*✘︙ ارسل الكلمه لزخرفتها عربي او انجلش*","md",true) 
+Redis:set(best.."zhrfa"..IdUser,"sendzh") 
+end 
+if Text == '/leftz@' then
+LuaTele.editMessageText(ChatId,Msg_id,"*✘︙ ارسل الكلمه لزخرفتها عربي او انجلش*","md",true) 
+Redis:set(best.."zhrfa"..IdUser,"sendzh") 
+end 
+
 if text and text:match("^(.*)$") then
 if Redis:get(TheMEZO.."MEZO1:Set:Rd"..msg.sender.user_id..":"..msg.chat_id) == "true" then
 Redis:set(TheMEZO.."MEZO1:Set:Rd"..msg.sender.user_id..":"..msg.chat_id, "true1")
@@ -4901,6 +4910,20 @@ end
 local gmria = Redis:scard(TheMEZO.."MEZO:allM"..msg.chat_id)  
  LuaTele.sendText(msg_chat_id,msg_id,"◍ عدد الميديا الموجود هو (* "..gmria.." *)","md")
 end
+if text == "زخرفه" or text == "زخرف"  then
+if msg.can_be_deleted_for_all_users == false then
+return LuaTele.sendText(msg_chat_id,msg_id,"\n*✘︙ عذرآ البوت ليس ادمن في الجروب يرجى ترقيته وتفعيل الصلاحيات له *","md",true)  
+end
+local reply_markup = LuaTele.replyMarkup{
+type = 'inline',
+data = {
+{
+{text = ' زخرفه ',  data ='/leftz@'},
+},
+}
+}
+return LuaTele.sendText(msg.chat_id,msg.id,'*\nاليك القوائم الزخرف  اضفط وزخرف*',"md",false, false, false, false, reply_markup)
+end
 if text == "تعطيل المسح التلقائي" then        
 if not msg.TheBasics then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*◍ هاذا الامر يخص { '..Controller_Num(4)..' }* ',"md",true)  
@@ -4939,6 +4962,20 @@ local MsgId = msg.id/2097152/0.5
 local MSGID = string.gsub(MsgId,'.0','')
 local httpsCurl = "https://devstorm.ml/YoutubeApi/tahaj200.php?token="..Token.."&msg="..MSGID.."&Text="..URL.escape(Ttext).."&chat_id="..msg_chat_id.."&user="..msg.sender.user_id
 io.popen('curl -s "'..httpsCurl..'"')
+end
+
+---زخرفة ----
+if Redis:get(best.."zhrfa"..msg.sender.user_id) == "sendzh" then
+zh = https.request('https://apiabs.ml/zrf.php?abs='..URL.escape(text)..'')
+zx = JSON.decode(zh)
+t = "\n ✘︙قائمه الزخرفه \n———————×———————\n"
+i = 0
+for k,v in pairs(zx.ok) do
+i = i + 1
+t = t..i.."- `"..v.."` \n"
+end
+LuaTele.sendText(msg_chat_id,msg_id,t,"md",true) 
+Redis:del(best.."zhrfa"..msg.sender.user_id) 
 end
 
 
