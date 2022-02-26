@@ -4464,51 +4464,40 @@ local rd_tlaq = {
 return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(Message_Reply.sender.user_id,rd_tlaq[math.random(#rd_tlaq)]).Reply,"md",true)  
 end
 end
-if text == "رفع متوحد" or text == "رفع متوحدد" or text == "ارفع المتوحد" and msg.reply_to_message_id ~= 0 then
+if text == "رفع متوحد" or text == "متوحد" and msg.reply_to_message_id ~= 0 then
 local Message_Reply = LuaTele.getMessage(msg.chat_id, msg.reply_to_message_id)
 local UserInfo = LuaTele.getUser(Message_Reply.sender.user_id)
-if tonumber(Message_Reply.sender.user_id) == tonumber(msg.sender.user_id) then
-return LuaTele.sendText(msg_chat_id,msg_id,"*الحق الود تعبان عوز يتجوز نفسه 😂*","md",true)  
-end
 if tonumber(Message_Reply.sender.user_id) == tonumber(TheMEZO) then
-return LuaTele.sendText(msg_chat_id,msg_id,"*شوفلك كلبه غير البوت يبنوسخه 😒*","md",true)  
+return LuaTele.sendText(msg_chat_id,msg_id,"*لا استطيع استخدام الأمر علي البوت ❍┃ *","md",true)  
 end
-if Redis:sismember(TheMEZO..msg_chat_id.."zwgat:",Message_Reply.sender.user_id) then
-local rd_mtzwga = {
-"الا يجوز رفع المتوحد ده عشان هو متوحد اصلا 🤔😂",
-" يبني مرفوع متوحد من قبل 😂",
+if Redis:sismember(TheMEZO..msg_chat_id.."lonely:",Message_Reply.sender.user_id) then
+local rd_mtzwga = {"تم رفعه متوحد مسبقا 😂",
 }
 return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(Message_Reply.sender.user_id,rd_mtzwga[math.random(#rd_mtzwga)]).Reply,"md",true)  
 else
-local rd_zwag = {
-"تم رفعه متوحد في الجروب • 🌝💙",
+local rd_zwag = {"تم رفعه متوحد في الجروب 😂",
 }
 if Redis:sismember(TheMEZO..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id) then 
 Redis:srem(TheMEZO..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id)
 end
-Redis:sadd(TheMEZO..msg_chat_id.."zwgat:",Message_Reply.sender.user_id) 
+Redis:sadd(TheMEZO..msg_chat_id.."lonely:",Message_Reply.sender.user_id) 
 return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(Message_Reply.sender.user_id,rd_zwag[math.random(#rd_zwag)]).Reply,"md",true)  
 end
 end
-if text == "تنزيل متوحد" or text == "تنزيل متوحدد" or text == "نزل المتوحد" and msg.reply_to_message_id ~= 0 then
+if text == "تنزيل متوحد" or text == "تنزل المتوحد" and msg.reply_to_message_id ~= 0 then
 local Message_Reply = LuaTele.getMessage(msg.chat_id, msg.reply_to_message_id)
 local UserInfo = LuaTele.getUser(Message_Reply.sender.user_id)
-if tonumber(Message_Reply.sender.user_id) == tonumber(msg.sender.user_id) then
-return LuaTele.sendText(msg_chat_id,msg_id,"بس يا اهبل فيه حد يرفع نفسو 🤔😂","md",true)  
-end
 if tonumber(Message_Reply.sender.user_id) == tonumber(TheMEZO) then
-return LuaTele.sendText(msg_chat_id,msg_id,"هو انتا عبيط ي كابتن بترفع نفسك ليه ؟ 🤔😂","md",true)  
+return LuaTele.sendText(msg_chat_id,msg_id,"*لا استطيع استخدام الأمر علي البوت ❍┃ *","md",true)  
 end
-if Redis:sismember(TheMEZO..msg_chat_id.."zwgat:",Message_Reply.sender.user_id) then
-Redis:srem(TheMEZO..msg_chat_id.."zwgat:",Message_Reply.sender.user_id)
+if Redis:sismember(TheMEZO..msg_chat_id.."lonely:",Message_Reply.sender.user_id) then
+Redis:srem(TheMEZO..msg_chat_id.."lonely:",Message_Reply.sender.user_id)
 Redis:sadd(TheMEZO..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id) 
-local rd_tmtlaq = {
-"تم تنزيله من المتوحدين داخل المجموعه 🌝🚨 😂",
+local rd_tlaq = {"😂 تم تنزيله متوحد",
 }
 return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(Message_Reply.sender.user_id,rd_tmtlaq[math.random(#rd_tmtlaq)]).Reply,"md",true)  
 else
-local rd_tlaq = {
-"طب انا راضي زمتك هتنزلو ازاي وهو مش مرفوع اصلا 😞😡 😹",
+local rd_tmtlaq = {"😂 تم تنزيله متوحد مسبقا",
 }
 return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(Message_Reply.sender.user_id,rd_tlaq[math.random(#rd_tlaq)]).Reply,"md",true)  
 end
@@ -10467,22 +10456,22 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '‹ اوامر الحمايه ›', data = msg.sender.user_id..'/help1'}, {text = '‹ اوامر الادمنيه ›', data = msg.sender.user_id..'/help2'}, 
+{text = '‹ اوامر الحمايه ›', data = IdUser..'/help1'}, {text = '‹ اوامر الادمنيه ›', data = IdUser..'/help2'}, 
 },
 {
-{text = '‹ اوامر المدراء ›', data = msg.sender.user_id..'/help3'}, {text = '‹ اوامر المنشئين ›', data = msg.sender.user_id..'/help4'}, 
+{text = '‹ اوامر المدراء ›', data = IdUser..'/help3'}, {text = '‹ اوامر المنشئين ›', data = IdUser..'/help4'}, 
 },
 {
-{text = '‹ اوامر المطورين ›', data = msg.sender.user_id..'/help5'}, 
+{text = '‹ اوامر المطورين ›', data = IdUser..'/help5'}, 
 },
 {
-{text = '‹ اوامر الاعضاء ›', data = msg.sender.user_id..'/help6'}, 
+{text = '‹ اوامر الاعضاء ›', data = IdUser..'/help6'}, 
 },
 {
-{text = '‹ اوامر التسليه ›', data = msg.sender.user_id..'/help9'}, {text = '‹ حذف الرتب ›', data = msg.sender.user_id..'/help8'}, 
+{text = '‹ اوامر التسليه ›', data = IdUser..'/help9'}, {text = '‹ حذف الرتب ›', data = IdUser..'/help8'}, 
 },
 {
-{text = '‹ اوامر القفل ›', data = msg.sender.user_id..'/NoNextSeting'}, {text = '‹ اوامر التعطيل ›', data = msg.sender.user_id..'/listallAddorrem'}, 
+{text = '‹ اوامر القفل ›', data = IdUser..'/NoNextSeting'}, {text = '‹ اوامر التعطيل ›', data = IdUser..'/listallAddorrem'}, 
 },
 {
 {text = '𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱', url = 't.me/GB_THOR'}, 
