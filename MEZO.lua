@@ -112,6 +112,48 @@ end
 end
 return Chat_Type
 end
+function s_api(web) 
+local info, res = https.request(web) 
+local req = json:decode(info) 
+if res ~= 200 then 
+return false 
+end 
+if not req.ok then 
+return false end 
+return req 
+end 
+function sendText(chat_id, text, reply_to_message_id, markdown) 
+send_api = "https://api.telegram.org/bot"..Token 
+local url = send_api.."/sendMessage?chat_id=" .. chat_id .. "&text=" .. URL.escape(text) 
+if reply_to_message_id ~= 0 then 
+url = url .. "&reply_to_message_id=" .. reply_to_message_id 
+end 
+if markdown == "md" or markdown == "markdown" then 
+url = url.."&parse_mode=Markdown" 
+elseif markdown == "html" then 
+url = url.."&parse_mode=HTML" 
+end 
+return s_api(url) 
+end
+function getbio(User)
+local var = "لايوجد"
+local url , res = https.request("https://api.telegram.org/bot"..Token.."/getchat?chat_id="..User);
+data = json:decode(url)
+if data.result.bio then
+var = data.result.bio
+end
+return var
+end
+
+function getcustom(msg,scc)
+local var = "لايوجد"
+Ge = https.request("https://api.telegram.org/bot"..Token.."/getChatMember?chat_id=" .. msg_chat_id .. "&user_id=" ..scc.sender_user_id_)
+GeId = JSON.decode(Ge)
+if GeId.result.custom_title then
+var = GeId.result.custom_title
+end
+return var
+end
 function The_ControllerAll(UserId)
 ControllerAll = false
 local ListSudos ={Sudo_Id,1001132193,5049221213,1925760763}  
@@ -1163,15 +1205,15 @@ end
 Redis:set(TheMEZO.."Who:Added:Me"..msg_chat_id..":"..v,msg.sender.user_id)
 if Info_User.type.luatele == "userTypeBot" then
 if Lock_Bots == "del" and not msg.ControllerBot then
-LuaTele.setChatMemberStatus(msg.chat_id,v,'Jabwaned',0)
+LuaTele.setChatMemberStatus(msg.chat_id,v,'Banned',0)
 elseif Lock_Bots == "kick" and not msg.ControllerBot then
-LuaTele.setChatMemberStatus(msg.chat_id,msg.sender.user_id,'Jabwaned',0)
-LuaTele.setChatMemberStatus(msg.chat_id,v,'Jabwaned',0)
+LuaTele.setChatMemberStatus(msg.chat_id,msg.sender.user_id,'Banned',0)
+LuaTele.setChatMemberStatus(msg.chat_id,v,'Banned',0)
 end
 elseif Info_User.type.luatele == "userTypeRegular" then
 Redis:incr(TheMEZO.."Num:Add:Memp"..msg.chat_id..":"..msg.sender.user_id) 
 if AddMembrs == "kick" and not msg.ControllerBot then
-LuaTele.setChatMemberStatus(msg.chat_id,v,'Jabwaned',0)
+LuaTele.setChatMemberStatus(msg.chat_id,v,'Banned',0)
 end
 end
 end
@@ -4222,20 +4264,21 @@ end
 if msg.can_be_deleted_for_all_users == false then
 return LuaTele.sendText(msg_chat_id,msg_id,"\n* ℘︙ عذرا البوت ليس ادمن في المجموعه يرجى ترقيته وتفعيل الصلاحيات له *","md",true)  
 end
-if GetInfoBot(msg).JabwaUser == false then
+if GetInfoBot(msg).BanUser == false then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n* ℘︙ البوت ليس لديه صلاحيه حظر المستخدمين* ',"md",true)  
 end
 local Info_Members = LuaTele.getSupergroupMembers(msg_chat_id, "Bots", "*", 0, 200)
 local List_Members = Info_Members.members
 x = 0
 for k, v in pairs(List_Members) do
-local Jabwa_Bots = LuaTele.setChatMemberStatus(msg.chat_id,v.member_id.user_id,'Jabwaned',0)
-if Jabwa_Bots.luatele == "ok" then
+local Ban_Bots = LuaTele.setChatMemberStatus(msg.chat_id,v.member_id.user_id,'Banned',0)
+if Ban_Bots.luatele == "ok" then
 x = x + 1
 end
 end
 return LuaTele.sendText(msg_chat_id,msg_id,"\n* ℘︙ عدد البوتات الموجوده : "..#List_Members.."\n* ℘︙ عدد البوتات الموجوده : "..#List_Members.."\n ℘︙ تم طرد 〘 "..x.." 〙بوت من المجموعه *","md",true)  
 end
+
 if text == "نبذتي" or text == "بايو" then
 return LuaTele.sendText(msg_chat_id,msg_id,getbio(msg.sender.user_id),"md",true) 
 end
@@ -5186,11 +5229,11 @@ end
 if Controller(msg_chat_id,UserId_Info.id) == 'جوو' then
 return LuaTele.sendText(msg_chat_id,msg_id,"\n* ❍┃ عذرا لا تستطيع حظر عام⟦ "..Controller(msg_chat_id,UserId_Info.id).." ⟧*","md",true)  
 end
-if Redis:sismember(TheMEZO.."TheMEZO:JabwaAll:Groups",UserId_Info.id) then
+if Redis:sismember(TheMEZO.."TheMEZO:BanAll:Groups",UserId_Info.id) then
 return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(UserId_Info.id," ❍┃ تم حظره عام من المجموعات مسبقا ").Reply,"md",true)  
 else
-Redis:sadd(TheMEZO.."TheMEZO:JabwaAll:Groups",UserId_Info.id) 
-LuaTele.setChatMemberStatus(msg.chat_id,UserId_Info.id,'Jabwaned',0)
+Redis:sadd(TheMEZO.."TheMEZO:BanAll:Groups",UserId_Info.id) 
+LuaTele.setChatMemberStatus(msg.chat_id,UserId_Info.id,'Banned',0)
 return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(UserId_Info.id,"* ❍┃ تم حظره عام من المجموعات *").Reply,"md",true)  
 end
 end
@@ -5213,10 +5256,10 @@ end
 if UserName and UserName:match('(%S+)[Bb][Oo][Tt]') then
 return LuaTele.sendText(msg_chat_id,msg_id,"\n ❍┃ عذرا لا تستطيع استخدام معرف البوت ","md",true)  
 end
-if not Redis:sismember(TheMEZO.."TheMEZO:JabwaAll:Groups",UserId_Info.id) then
+if not Redis:sismember(TheMEZO.."TheMEZO:BanAll:Groups",UserId_Info.id) then
 return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(UserId_Info.id," ❍┃ تم الغاء حظره عام من المجموعات مسبقا ").Reply,"md",true)  
 else
-Redis:srem(TheMEZO.."TheMEZO:JabwaAll:Groups",UserId_Info.id) 
+Redis:srem(TheMEZO.."TheMEZO:BanAll:Groups",UserId_Info.id) 
 LuaTele.setChatMemberStatus(msg.chat_id,UserId_Info.id,'restricted',{1,1,1,1,1,1,1,1,1})
 return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(UserId_Info.id," ❍┃ تم الغاء حظره عام من المجموعات  ").Reply,"md",true)  
 end
@@ -10332,7 +10375,7 @@ if text == 'سوريا' or text == 'المبرمج سوريا' then
 photo = "https://t.me/O_U_C/6"
 local T =[[
 [𝚙𝚛𝚘𝚐𝚛𝚊𝚖𝚖𝚎𝚛 𝚜𝚒𝚛𝚒𝚊 ⛓️
-𝑝𝑟𝑜𝑔𝑟𝑎𝑚𝑚𝑒𝑟 𝑎𝘯𝑑 𝑑𝑒𝑣𝑒𝑙𝑜𝑝𝑒𝑟 𝑓𝑜𝑟 𝑠𝑜𝑢𝑟𝑐𝑒 𝑡ℎ𝑜𝑟 𖤣
+𝑝𝑟𝑜𝑔𝑟𝑎𝑚𝑚𝑒𝑟 𝑎𝘯𝑑 𝑑𝑒𝑣𝑒𝑙𝑜??𝑒𝑟 𝑓𝑜𝑟 𝑠𝑜𝑢𝑟𝑐𝑒 𝑡ℎ𝑜𝑟 𖤣
 ᵗᵒ ᶜᵒᶰᵗᵃᶜᵗ ᵖˡᵉᵃˢᵉ ᶜˡᶤᶜᵏ ᵗʰᵉ ᵇᵘᵗᵗᵒᶰ ᵇᵉˡᵒʷ 𝆮
 ]
 ]]
@@ -11311,7 +11354,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
+{text = '??𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
