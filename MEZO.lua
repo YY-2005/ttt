@@ -10498,22 +10498,22 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '‹ اوامر الحمايه ›', data = IdUser..'/help1'}, {text = '‹ اوامر الادمنيه ›', data = IdUser..'/help2'}, 
+{text = '‹ اوامر الحمايه ›', data = user_id..'/help1'}, {text = '‹ اوامر الادمنيه ›', data = user_id..'/help2'}, 
 },
 {
-{text = '‹ اوامر المدراء ›', data = IdUser..'/help3'}, {text = '‹ اوامر المنشئين ›', data = IdUser..'/help4'}, 
+{text = '‹ اوامر المدراء ›', data = user_id..'/help3'}, {text = '‹ اوامر المنشئين ›', data = user_id..'/help4'}, 
 },
 {
-{text = '‹ اوامر المطورين ›', data = IdUser..'/help5'}, 
+{text = '‹ اوامر المطورين ›', data = user_id..'/help5'}, 
 },
 {
-{text = '‹ اوامر الاعضاء ›', data = IdUser..'/help6'}, 
+{text = '‹ اوامر الاعضاء ›', data = user_id..'/help6'}, 
 },
 {
-{text = '‹ اوامر التسليه ›', data = IdUser..'/help9'}, {text = '‹ حذف الرتب ›', data = IdUser..'/help8'}, 
+{text = '‹ اوامر التسليه ›', data = user_id..'/help9'}, {text = '‹ حذف الرتب ›', data = user_id..'/help8'}, 
 },
 {
-{text = '‹ اوامر القفل ›', data = IdUser..'/NoNextSeting'}, {text = '‹ اوامر التعطيل ›', data = IdUser..'/listallAddorrem'}, 
+{text = '‹ اوامر القفل ›', data = user_id..'/NoNextSeting'}, {text = '‹ اوامر التعطيل ›', data = user_id..'/listallAddorrem'}, 
 },
 {
 {text = '𝗦َ𝗢ٰ𝗨ِِ𝖱ٰ𝗖ٌ𝗘 𝗧ِٰٰ𝗛𝗢ِٰ𝖱', url = 't.me/GB_THOR'}, 
