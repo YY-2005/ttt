@@ -1205,15 +1205,15 @@ end
 Redis:set(TheMEZO.."Who:Added:Me"..msg_chat_id..":"..v,msg.sender.user_id)
 if Info_User.type.luatele == "userTypeBot" then
 if Lock_Bots == "del" and not msg.ControllerBot then
-LuaTele.setChatMemberStatus(msg.chat_id,v,'Banned',0)
+LuaTele.setChatMemberStatus(msg.chat_id,v,'Jabwaned',0)
 elseif Lock_Bots == "kick" and not msg.ControllerBot then
-LuaTele.setChatMemberStatus(msg.chat_id,msg.sender.user_id,'Banned',0)
-LuaTele.setChatMemberStatus(msg.chat_id,v,'Banned',0)
+LuaTele.setChatMemberStatus(msg.chat_id,msg.sender.user_id,'Jabwaned',0)
+LuaTele.setChatMemberStatus(msg.chat_id,v,'Jabwaned',0)
 end
 elseif Info_User.type.luatele == "userTypeRegular" then
 Redis:incr(TheMEZO.."Num:Add:Memp"..msg.chat_id..":"..msg.sender.user_id) 
 if AddMembrs == "kick" and not msg.ControllerBot then
-LuaTele.setChatMemberStatus(msg.chat_id,v,'Banned',0)
+LuaTele.setChatMemberStatus(msg.chat_id,v,'Jabwaned',0)
 end
 end
 end
@@ -1841,7 +1841,7 @@ return LuaTele.sendText(msg_chat_id,msg_id,"◍ تم حذف الرد من ردو
 end
 end
 if Redis:get(TheMEZO.."MEZO:Broadcasting:Groups:Pin" .. msg_chat_id .. ":" .. msg.sender.user_id) then 
-if text == "الغاء" or text == 'الغاء الامر 📍' then   
+if text == "الغاء" or text == 'الغاء الامر ✰' then   
 Redis:del(TheMEZO.."MEZO:Broadcasting:Groups:Pin" .. msg_chat_id .. ":" .. msg.sender.user_id) 
 return LuaTele.sendText(msg_chat_id,msg_id, "\n◍ تم الغاء الاذاعه للمجموعات","md",true)  
 end 
@@ -1905,7 +1905,7 @@ return false
 end
 ------------------------------------------------------------------------------------------------------------
 if Redis:get(TheMEZO.."MEZO:Broadcasting:Users" .. msg_chat_id .. ":" .. msg.sender.user_id) then 
-if text == "الغاء" or text == 'الغاء الامر 📍' then   
+if text == "الغاء" or text == 'الغاء الامر ✰' then   
 Redis:del(TheMEZO.."MEZO:Broadcasting:Users" .. msg_chat_id .. ":" .. msg.sender.user_id) 
 return LuaTele.sendText(msg_chat_id,msg_id, "\n◍ تم الغاء الاذاعه خاص","md",true)  
 end 
@@ -1960,7 +1960,7 @@ return false
 end
 ------------------------------------------------------------------------------------------------------------
 if Redis:get(TheMEZO.."MEZO:Broadcasting:Groups" .. msg_chat_id .. ":" .. msg.sender.user_id) then 
-if text == "الغاء" or text == 'الغاء الامر 📍' then   
+if text == "الغاء" or text == 'الغاء الامر ✰' then   
 Redis:del(TheMEZO.."MEZO:Broadcasting:Groups" .. msg_chat_id .. ":" .. msg.sender.user_id) 
 return LuaTele.sendText(msg_chat_id,msg_id, "\n◍ تم الغاء الاذاعه للمجموعات","md",true)  
 end 
@@ -2015,7 +2015,7 @@ return false
 end
 ------------------------------------------------------------------------------------------------------------
 if Redis:get(TheMEZO.."MEZO:Broadcasting:Groups:Fwd" .. msg_chat_id .. ":" .. msg.sender.user_id) then 
-if text == "الغاء" or text == 'الغاء الامر 📍' then   
+if text == "الغاء" or text == 'الغاء الامر ✰' then   
 Redis:del(TheMEZO.."MEZO:Broadcasting:Groups:Fwd" .. msg_chat_id .. ":" .. msg.sender.user_id) 
 return LuaTele.sendText(msg_chat_id,msg_id, "\n◍ تم الغاء الاذاعه بالتوجيه للمجموعات","md",true)    
 end 
@@ -2031,7 +2031,7 @@ return false
 end
 ------------------------------------------------------------------------------------------------------------
 if Redis:get(TheMEZO.."MEZO:Broadcasting:Users:Fwd" .. msg_chat_id .. ":" .. msg.sender.user_id) then 
-if text == "الغاء" or text == 'الغاء الامر 📍' then   
+if text == "الغاء" or text == 'الغاء الامر ✰' then   
 Redis:del(TheMEZO.."MEZO:Broadcasting:Users:Fwd" .. msg_chat_id .. ":" .. msg.sender.user_id) 
 return LuaTele.sendText(msg_chat_id,msg_id, "\n◍ تم الغاء الاذاعه بالتوجيه خاص","md",true)    
 end 
@@ -2046,7 +2046,7 @@ end
 return false
 end
 if text and Redis:get(TheMEZO..'MEZO:GetTexting:DevTheMEZO'..msg_chat_id..':'..msg.sender.user_id) then
-if text == 'الغاء' or text == 'الغاء الامر 📍' then 
+if text == 'الغاء' or text == 'الغاء الامر ✰' then 
 Redis:del(TheMEZO..'MEZO:GetTexting:DevTheMEZO'..msg_chat_id..':'..msg.sender.user_id)
 return LuaTele.sendText(msg_chat_id,msg_id,'◍ تم الغاء حفظ كليشة المطور')
 end
@@ -2065,7 +2065,7 @@ Redis:set(TheMEZO.."MEZO:Set:Id:Group"..msg.chat_id,text:match("(.*)"))
 LuaTele.sendText(msg_chat_id,msg_id,'◍ تم تعين الايدي الجديد',"md",true)  
 end
 if Redis:get(TheMEZO.."MEZO:Change:Name:Bot"..msg.sender.user_id) then 
-if text == "الغاء" or text == 'الغاء الامر 📍' then   
+if text == "الغاء" or text == 'الغاء الامر ✰' then   
 Redis:del(TheMEZO.."MEZO:Change:Name:Bot"..msg.sender.user_id) 
 return LuaTele.sendText(msg_chat_id,msg_id, "\n◍ تم الغاء امر تغير اسم البوت","md",true)  
 end 
@@ -2074,7 +2074,7 @@ Redis:set(TheMEZO.."MEZO:Name:Bot",text)
 return LuaTele.sendText(msg_chat_id,msg_id, "◍  تم تغير اسم البوت الى - "..text,"md",true)    
 end 
 if Redis:get(TheMEZO.."MEZO:Change:Start:Bot"..msg.sender.user_id) then 
-if text == "الغاء" or text == 'الغاء الامر 📍' then   
+if text == "الغاء" or text == 'الغاء الامر ✰' then   
 Redis:del(TheMEZO.."MEZO:Change:Start:Bot"..msg.sender.user_id) 
 return LuaTele.sendText(msg_chat_id,msg_id, "\n◍ تم الغاء امر تغير كليشه start","md",true)  
 end 
@@ -2285,7 +2285,7 @@ end
 end
 end
 if (Redis:get(TheMEZO..'MEZO:Channel:Redis'..msg_chat_id..':'..msg.sender.user_id) == 'true') then
-if text == 'الغاء' or text == 'الغاء الامر 📍' then 
+if text == 'الغاء' or text == 'الغاء الامر ✰' then 
 Redis:del(TheMEZO..'MEZO:Channel:Redis'..msg_chat_id..':'..msg.sender.user_id)
 return LuaTele.sendText(msg_chat_id,msg_id,'◍ تم الغاء حفظ قناة الاشتراك')
 end
@@ -2349,7 +2349,7 @@ end
 --download('https://github.com/Haeszm/new/MEZO.lua','MEZO.lua')
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*تم ♻️ •《تحديث السورس》• ♻️ * ',"md",true)  
 end
-if text == '𖡶 تعطيل المغادره 𖡶' or text == 'تعطيل المغادره' then
+if text == '✵  تعطيل المغادره ✵ ' or text == 'تعطيل المغادره' then
 if not msg.ControllerBot then 
 return LuaTele.sendText(msg_chat_id,msg_id,'\n* ◉ هاذا الامر يخص 『 '..Controller_Num(1)..' 』* ',"md",true)  
 end
@@ -2360,7 +2360,7 @@ end
 Redis:del(TheMEZO.."MEZO:LeftBot") 
 return LuaTele.sendText(msg_chat_id,msg_id," ◉ تم تعطيل المغادره ","md",true)
 end
-if text == '𖡶 تفعيل المغادره 𖡶' or text == 'تفعيل المغادره' then
+if text == '✵  تفعيل المغادره ✵ ' or text == 'تفعيل المغادره' then
 if not msg.ControllerBot then 
 return LuaTele.sendText(msg_chat_id,msg_id,'\n* ◉ هاذا الامر يخص 『 '..Controller_Num(1)..' 』* ',"md",true)  
 end
@@ -4253,35 +4253,6 @@ type = 'inline',
 data = {{{text = '◉ مسح المكتومين عام ◉', data = msg.sender.user_id..'/ktmAll'},},}}
 return LuaTele.sendText(msg_chat_id, msg_id, ListMembers, 'md', false, false, false, false, reply_markup)
 end
-if text == 'طرد البوتات' then
-if not msg.Managers then
-return LuaTele.sendText(msg_chat_id,msg_id,'\n* ℘︙ هاذا الامر يخص 〘 '..Controller_Num(6)..' 〙* ',"md",true)  
-end
-if ChannelJoin(msg) == false then
-local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/belalelshayals'}, },}}
-return LuaTele.sendText(msg.chat_id,msg.id,'*\n ℘︙ عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if msg.can_be_deleted_for_all_users == false then
-return LuaTele.sendText(msg_chat_id,msg_id,"\n* ℘︙ عذرا البوت ليس ادمن في المجموعه يرجى ترقيته وتفعيل الصلاحيات له *","md",true)  
-end
-if GetInfoBot(msg).BanUser == false then
-return LuaTele.sendText(msg_chat_id,msg_id,'\n* ℘︙ البوت ليس لديه صلاحيه حظر المستخدمين* ',"md",true)  
-end
-local Info_Members = LuaTele.getSupergroupMembers(msg_chat_id, "Bots", "*", 0, 200)
-local List_Members = Info_Members.members
-x = 0
-for k, v in pairs(List_Members) do
-local Ban_Bots = LuaTele.setChatMemberStatus(msg.chat_id,v.member_id.user_id,'Banned',0)
-if Ban_Bots.luatele == "ok" then
-x = x + 1
-end
-end
-return LuaTele.sendText(msg_chat_id,msg_id,"\n* ℘︙ عدد البوتات الموجوده : "..#List_Members.."\n* ℘︙ عدد البوتات الموجوده : "..#List_Members.."\n ℘︙ تم طرد 〘 "..x.." 〙بوت من المجموعه *","md",true)  
-end
-
-if text == "نبذتي" or text == "بايو" then
-return LuaTele.sendText(msg_chat_id,msg_id,getbio(msg.sender.user_id),"md",true) 
-end
 if text == 'المحظورين' then
 if not msg.Addictive then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*◍ هاذا الامر يخص { '..Controller_Num(7)..' }* ',"md",true)  
@@ -4470,7 +4441,7 @@ local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اض�
 return LuaTele.sendText(msg.chat_id,msg.id,'*\n◍ عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:set(TheMEZO.."MEZO:TwaslBot",true) 
-return LuaTele.sendText(msg_chat_id,msg_id,"◍ تم 📍تفعيل التواصل📍 داخل البوت ","md",true)
+return LuaTele.sendText(msg_chat_id,msg_id,"◍ تم ✰تفعيل التواصل✰ داخل البوت ","md",true)
 end
 
 end
@@ -5184,7 +5155,7 @@ local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اض�
 return LuaTele.sendText(msg.chat_id,msg.id,'*\n◍ عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:del(TheMEZO.."MEZO:TwaslBot") 
-return LuaTele.sendText(msg_chat_id,msg_id,"◍ تم 📍تعطيل التواصل📍 داخل البوت ","md",true)
+return LuaTele.sendText(msg_chat_id,msg_id,"◍ تم ✰تعطيل التواصل✰ داخل البوت ","md",true)
 end
 
 end
@@ -5229,11 +5200,11 @@ end
 if Controller(msg_chat_id,UserId_Info.id) == 'جوو' then
 return LuaTele.sendText(msg_chat_id,msg_id,"\n* ❍┃ عذرا لا تستطيع حظر عام⟦ "..Controller(msg_chat_id,UserId_Info.id).." ⟧*","md",true)  
 end
-if Redis:sismember(TheMEZO.."TheMEZO:BanAll:Groups",UserId_Info.id) then
+if Redis:sismember(TheMEZO.."TheMEZO:JabwaAll:Groups",UserId_Info.id) then
 return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(UserId_Info.id," ❍┃ تم حظره عام من المجموعات مسبقا ").Reply,"md",true)  
 else
-Redis:sadd(TheMEZO.."TheMEZO:BanAll:Groups",UserId_Info.id) 
-LuaTele.setChatMemberStatus(msg.chat_id,UserId_Info.id,'Banned',0)
+Redis:sadd(TheMEZO.."TheMEZO:JabwaAll:Groups",UserId_Info.id) 
+LuaTele.setChatMemberStatus(msg.chat_id,UserId_Info.id,'Jabwaned',0)
 return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(UserId_Info.id,"* ❍┃ تم حظره عام من المجموعات *").Reply,"md",true)  
 end
 end
@@ -5256,10 +5227,10 @@ end
 if UserName and UserName:match('(%S+)[Bb][Oo][Tt]') then
 return LuaTele.sendText(msg_chat_id,msg_id,"\n ❍┃ عذرا لا تستطيع استخدام معرف البوت ","md",true)  
 end
-if not Redis:sismember(TheMEZO.."TheMEZO:BanAll:Groups",UserId_Info.id) then
+if not Redis:sismember(TheMEZO.."TheMEZO:JabwaAll:Groups",UserId_Info.id) then
 return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(UserId_Info.id," ❍┃ تم الغاء حظره عام من المجموعات مسبقا ").Reply,"md",true)  
 else
-Redis:srem(TheMEZO.."TheMEZO:BanAll:Groups",UserId_Info.id) 
+Redis:srem(TheMEZO.."TheMEZO:JabwaAll:Groups",UserId_Info.id) 
 LuaTele.setChatMemberStatus(msg.chat_id,UserId_Info.id,'restricted',{1,1,1,1,1,1,1,1,1})
 return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(UserId_Info.id," ❍┃ تم الغاء حظره عام من المجموعات  ").Reply,"md",true)  
 end
@@ -10375,7 +10346,7 @@ if text == 'سوريا' or text == 'المبرمج سوريا' then
 photo = "https://t.me/O_U_C/6"
 local T =[[
 [𝚙𝚛𝚘𝚐𝚛𝚊𝚖𝚖𝚎𝚛 𝚜𝚒𝚛𝚒𝚊 ⛓️
-𝑝𝑟𝑜𝑔𝑟𝑎𝑚𝑚𝑒𝑟 𝑎𝘯𝑑 𝑑𝑒𝑣𝑒𝑙𝑜??𝑒𝑟 𝑓𝑜𝑟 𝑠𝑜𝑢𝑟𝑐𝑒 𝑡ℎ𝑜𝑟 𖤣
+𝑝𝑟𝑜𝑔𝑟𝑎𝑚𝑚𝑒𝑟 𝑎𝘯𝑑 𝑑𝑒𝑣𝑒𝑙𝑜𝑝𝑒𝑟 𝑓𝑜𝑟 𝑠𝑜𝑢𝑟𝑐𝑒 𝑡ℎ𝑜𝑟 𖤣
 ᵗᵒ ᶜᵒᶰᵗᵃᶜᵗ ᵖˡᵉᵃˢᵉ ᶜˡᶤᶜᵏ ᵗʰᵉ ᵇᵘᵗᵗᵒᶰ ᵇᵉˡᵒʷ 𝆮
 ]
 ]]
@@ -10558,6 +10529,9 @@ return LuaTele.sendText(msg_chat_id,msg_id, [[*
 *]],"md",false, false, false, false, reply_markup)
 end
 
+if text == "نبذتي" or text == "بايو" then
+return LuaTele.sendText(msg_chat_id,msg_id,getbio(msg.sender.user_id),"md",true) 
+end
 if text == 'السورس' or text == 'سورس' or text == 'يا سورس' or text == 'source' then
 video = "https://t.me/GB_THOR/71"
 local T =[[
@@ -10571,16 +10545,16 @@ local T =[[
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = 'ٰ𝘼ٰٰ𝙃ِ𝙈ٌٓ𝙀ٰٰ𝘿ِِ 𝙎ٍَ𝙄ِ𝖱ٍ𝙄ٰ𝘼', url = "https://t.me/Y_U_A_R"},{text = '• ²ٓ𝘽ٰ𝘼ِ𝖱ٌِ𝙇𝙊ٰ •', url = "https://t.me/bar_lo0o0"}
+{text = '𝙙ٍ𝙚َ𝙫 ₁', url = "https://t.me/Y_U_A_R"},{text = '𝙙ٍ𝙚َ𝙫 ₂ •', url = "https://t.me/bar_lo0o0"}
 },
 {
-{text = 'ٰ𝘿ِٰ𝘼ٰ𝘿ِ 𝙂ٰٓ𝘼ٓ𝙕ٰ𝘼ٌِ𝙇 𝆮', url = "https://t.me/G8AZAAL"},{text = 'ᴅᥱᥳ.ᥴ.ꪜ.Ꭵ.𝘴.ƚ.Ꭵ.ꫝ.ꪖ𖠉ོ𖠉ོ˼‏', url = "https://t.me/CR_Dev_CR"}
+{text = '𝙙ٍ𝙚َ𝙫 ₃', url = "https://t.me/G8AZAAL"},{text = '𝙙ٍ𝙚َ𝙫 ₃', url = "https://t.me/CR_Dev_CR"}
 },
 {
 {text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = "https://t.me/GB_THOR"}
 },
 {
-{text = '𖡶 • أضف البوت إلي مجموعتك • 𖡶', url = 't.me/'..UserBot..'?startgroup=new'},
+{text = '✵  • أضف البوت إلي مجموعتك • ✵ ', url = 't.me/'..UserBot..'?startgroup=new'},
 },
 }
 local msgg = msg_id/2097152/0.5
@@ -11354,7 +11328,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '??𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
+{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍', url = 't.me/GB_THOR'}, 
 },
 }
 }
@@ -11571,7 +11545,7 @@ end
 end
 if text == "سمايلات" or text == "سمايل" then
 if Redis:get(TheMEZO.."MEZO:Status:Games"..msg.chat_id) then
-Random = {"🍏","🍎","🍐","🍊","🍋","🍉","🍇","🍓","🍈","🍒","🍑","🍍","🥥","🥝","🍅","🍆","🥑","🥦","🥒","🌶","🌽","🥕","🥔","🥖","🥐","🍞","🥨","🍟","🧀","🥚","🍳","🥓","🥩","🍗","🍖","🌭","🍔","🍠","🍕","🥪","🥙","☕️","🥤","🍶","🍺","🍻","🏀","⚽️","🏈","⚾️","🎾","🏐","🏉","🎱","🏓","🏸","🥅","🎰","🎮","🎳","🎯","🎲","🎻","🎸","🎺","🥁","🎹","🎼","🎧","🎤","🎬","🎨","🎭","🎪","🎟","🎫","🎗","🏵","🎖","🏆","🥌","🛷","🚗","🚌","🏎","🚓","🚑","🚚","🚛","🚜","⚔","🛡","🔮","🌡","💣","⌔","📍","📓","📗","📂","📅","📪","📫","⌔","📭","⏰","??","🎚","☎️","📡"}
+Random = {"🍏","🍎","🍐","🍊","🍋","🍉","🍇","🍓","🍈","🍒","🍑","🍍","🥥","🥝","🍅","🍆","🥑","🥦","🥒","🌶","🌽","🥕","🥔","🥖","🥐","🍞","🥨","🍟","🧀","🥚","🍳","🥓","🥩","🍗","🍖","🌭","🍔","🍠","🍕","🥪","🥙","☕️","🥤","🍶","🍺","🍻","🏀","⚽️","🏈","⚾️","🎾","🏐","🏉","🎱","🏓","🏸","🥅","🎰","🎮","🎳","🎯","🎲","🎻","🎸","🎺","🥁","🎹","🎼","🎧","🎤","🎬","🎨","🎭","🎪","🎟","🎫","🎗","🏵","🎖","🏆","🥌","🛷","🚗","🚌","🏎","🚓","🚑","🚚","🚛","🚜","⚔","🛡","🔮","🌡","💣","⌔","✰","📓","📗","📂","📅","📪","📫","⌔","📭","⏰","??","🎚","☎️","📡"}
 SM = Random[math.random(#Random)]
 Redis:set(TheMEZO.."MEZO:Game:Smile"..msg.chat_id,SM)
 return LuaTele.sendText(msg_chat_id,msg_id,"◍ اسرع واحد يدز هاذا السمايل ? ~ {`"..SM.."`}","md",true)  
@@ -12679,7 +12653,7 @@ if text == '/start' then
 Redis:sadd(TheMEZO..'MEZO:Num:User:Pv',msg.sender.user_id)  
 if not msg.ControllerBot then
 if not Redis:get(TheMEZO.."MEZO:Start:Bot") then
-local CmdStart = '*\n🤖╖ أهلآ بك عزيزي أنا بوت'..(Redis:get(TheMEZO.."MEZO:Name:Bot") or "براديس")..
+local CmdStart = '*\n🤖╖ أهلآ بك عزيزي أنا بوت'..(Redis:get(TheMEZO.."MEZO:Name:Bot") or "ثور")..
 '\n🌐╢ وظيفتي حماية المجموعات'..
 '\n✅╢ لتفعيل البوت عليك اتباع مايلي.'..
 '\n🔘╢ أضِف البوت إلى مجموعتك'..
@@ -12721,10 +12695,10 @@ data = {
 	{text = '⩹━━━━𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍━━━━⩺',type = 'text'},
 },
 {
-{text = '📍تفعيل التواصل📍',type = 'text'},{text = '📍تعطيل التواصل📍', type = 'text'},
+{text = '✰تفعيل التواصل✰',type = 'text'},{text = '✰تعطيل التواصل✰', type = 'text'},
 },
 {
-{text = '𖡶 تعطيل المغادره 𖡶',type = 'text'},{text = '𖡶 تفعيل المغادره 𖡶',type = 'text'},
+{text = '✵  تعطيل المغادره ✵ ',type = 'text'},{text = '✵  تفعيل المغادره ✵ ',type = 'text'},
 },
 {
 {text = 'تفعيل البوت الخدمي ⚙',type = 'text'},{text = 'تعطيل البوت الخدمي ⚙', type = 'text'},
@@ -12742,7 +12716,7 @@ data = {
 {text = '📢 تعطيل الاذاعه 📢',type = 'text'},{text = '📢 تفعيل الاذاعه 📢',type = 'text'},
 },
 {
-{text = '🕹 مسح قائمه العام 🕹', type = 'text'},{text = '🕹 قائمه العام 🕹', type = 'text'},
+{text = '✰ مسح قائمه العام ✰', type = 'text'},{text = '✰ قائمه العام ✰', type = 'text'},
 },
 {
 {text = '👮‍♂️مسح المطورين👮‍♂️',type = 'text'},{text = '👮‍♂️المطورين👮‍♂️', type = 'text'},
@@ -12790,7 +12764,7 @@ data = {
 {text = '⩹━━━━𝙎𝙊𝙐𝙍𝘾𝙀 𝙏𝙃𝙊𝙍━━━━⩺',type = 'text'},
 },
 {
-{text = 'الغاء الامر 📍',type = 'text'},
+{text = 'الغاء الامر ✰',type = 'text'},
 },
 }
 }
@@ -13138,7 +13112,7 @@ end
 Redis:del(TheMEZO.."MEZO:DevelopersQ:Groups") 
 return LuaTele.sendText(msg_chat_id,msg_id,"*◍ تم مسح {"..#Info_Members.."} من المطورين *","md",true)
 end
-if text == '🕹 مسح قائمه العام 🕹' then
+if text == '✰ مسح قائمه العام ✰' then
 if not msg.ControllerBot then 
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*◍ هاذا الامر يخص { '..Controller_Num(1)..' }* ',"md",true)  
 end
@@ -13164,7 +13138,7 @@ end
 Redis:del(TheMEZO.."MEZO:BotFree") 
 return LuaTele.sendText(msg_chat_id,msg_id,"◍ تم تعطيل البوت الخدمي ","md",true)
 end
-if text == '📍تعطيل التواصل📍' then
+if text == '✰تعطيل التواصل✰' then
 if not msg.ControllerBot then 
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*◍ هاذا الامر يخص { '..Controller_Num(1)..' }* ',"md",true)  
 end
@@ -13173,7 +13147,7 @@ local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اض�
 return LuaTele.sendText(msg.chat_id,msg.id,'*\n◍ عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:del(TheMEZO.."MEZO:TwaslBot") 
-return LuaTele.sendText(msg_chat_id,msg_id,"◍ تم 📍تعطيل التواصل📍 داخل البوت ","md",true)
+return LuaTele.sendText(msg_chat_id,msg_id,"◍ تم ✰تعطيل التواصل✰ داخل البوت ","md",true)
 end
 if text == 'تفعيل البوت الخدمي ⚙' then
 if not msg.ControllerBot then 
@@ -13186,7 +13160,7 @@ end
 Redis:set(TheMEZO.."MEZO:BotFree",true) 
 return LuaTele.sendText(msg_chat_id,msg_id,"◍ تم تفعيل البوت الخدمي ","md",true)
 end
-if text == '📍تفعيل التواصل📍' then
+if text == '✰تفعيل التواصل✰' then
 if not msg.ControllerBot then 
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*◍ هاذا الامر يخص { '..Controller_Num(1)..' }* ',"md",true)  
 end
@@ -13195,9 +13169,9 @@ local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اض�
 return LuaTele.sendText(msg.chat_id,msg.id,'*\n◍ عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:set(TheMEZO.."MEZO:TwaslBot",true) 
-return LuaTele.sendText(msg_chat_id,msg_id,"◍ تم 📍تفعيل التواصل📍 داخل البوت ","md",true)
+return LuaTele.sendText(msg_chat_id,msg_id,"◍ تم ✰تفعيل التواصل✰ داخل البوت ","md",true)
 end
-if text == '🕹 قائمه العام 🕹' then
+if text == '✰ قائمه العام ✰' then
 if not msg.ControllerBot then 
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*◍ هاذا الامر يخص { '..Controller_Num(1)..' }* ',"md",true)  
 end 
