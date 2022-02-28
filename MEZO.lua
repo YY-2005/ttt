@@ -10452,37 +10452,38 @@ end
 end
 end
 if Redis:get(TheMEZO.."youtube"..msg.sender.user_id..msg_chat_id) == "mp3" then
+Redis:del(TheMEZO.."youtube"..msg.sender.user_id..msg_chat_id)
 local rep = msg.id/2097152/0.5
-local m = rep +1
-https.request("https://api.telegram.org/bot"..Token.."/sendAnimation?chat_id="..msg_chat_id.."&animation=https://t.me/youtubebarlobot/4&reply_to_message_id="..rep)
-https.request("https://api.medooo.ml/leomedo/yt?text="..URL.escape(text).."&token="..Token.."&msg_id="..rep.."&chat_id="..msg_chat_id.."&type=mp3")
+local m = json:decode(https.request("https://api.telegram.org/bot"..Token.."/sendAnimation?chat_id="..msg_chat_id.."&animation=https://t.me/youtube7odabot/7951&reply_to_message_id="..rep)).result.message_id
+https.request("https://xnxx.TheMEZObots.ml/new-yt.php?text="..text.."&chat="..msg.chat_id.."&token="..Token.."&rep="..rep.."&type=mp3")
 https.request("https://api.telegram.org/bot"..Token.."/deleteMessage?chat_id="..msg_chat_id.."&message_id="..m)
 Redis:del(TheMEZO.."youtube"..msg.sender.user_id..msg_chat_id)
 end
 if Redis:get(TheMEZO.."youtube"..msg.sender.user_id..msg_chat_id) == "mp4" then
+Redis:del(TheMEZO.."youtube"..msg.sender.user_id..msg_chat_id)
+
 local rep = msg.id/2097152/0.5
-local m = rep +1
-https.request("https://api.telegram.org/bot"..Token.."/sendAnimation?chat_id="..msg_chat_id.."&animation=https://t.me/youtubebarlobot/4&reply_to_message_id="..rep)
-https.request("https://api.medooo.ml/leomedo/yt?text="..URL.escape(text).."&token="..Token.."&msg_id="..rep.."&chat_id="..msg_chat_id.."&type=mp4")
+local m = json:decode(https.request("https://api.telegram.org/bot"..Token.."/sendAnimation?chat_id="..msg_chat_id.."&animation=https://t.me/youtube7odabot/7951&reply_to_message_id="..rep)).result.message_id
+https.request("https://xnxx.TheMEZObots.ml/new-yt.php?text="..text.."&chat="..msg.chat_id.."&token="..Token.."&rep="..rep.."&type=mp4")
 https.request("https://api.telegram.org/bot"..Token.."/deleteMessage?chat_id="..msg_chat_id.."&message_id="..m)
 Redis:del(TheMEZO.."youtube"..msg.sender.user_id..msg_chat_id)
 end
 if text == "يوتيوب" then
+if otlop(msg) == false then
+local chinfo = Redis:get("ch:admin:3am")
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = chinfo}, },}}
+return sendx(msg.chat_id,msg.id,'*\n※ عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
+end
 local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '[•>تحميل صوت<•]', data = msg.sender.user_id..'/mp3'..msg_id}, {text = '[•>تحميل فيديو<•]', data = msg.sender.user_id..'/mp4'..msg_id}, 
+{text = 'تحميل صوت', data = msg.sender.user_id..'/mp3'..msg_id}, {text = 'تحميل فيديو', data = msg.sender.user_id..'/mp4'..msg_id}, 
 },
 }
 }
-return LuaTele.sendText(msg_chat_id,msg_id, [[*
-🔻╎ نورت #يرحقلبي • ♡ • ~
-🔺️╎ اهلا بك في { قسم } اليوتيوب • ~
-🔻╎ اختار نوع البحث الي تحتاجه • ~
-🔺️╎ من خلال الأزرار بالأسفل 👇 • ~
-
-(t.me/GB_THOR)
+return sendx(msg_chat_id,msg_id, [[*
+※ اختر كيف تريد التحميل
 *]],"md",false, false, false, false, reply_markup)
 end
 
