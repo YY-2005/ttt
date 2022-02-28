@@ -10477,7 +10477,7 @@ data = {
 },
 }
 }
-return sendx(msg_chat_id,msg_id, [[*
+LuaTele.sendText(msg_chat_id,msg_id, [[*
 ※ اختر كيف تريد التحميل
 *]],"md",false, false, false, false, reply_markup)
 end
