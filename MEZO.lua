@@ -10409,20 +10409,6 @@ keyboard.inline_keyboard = {
 local msgg = msg_id/2097152/0.5
 https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id=" .. msg_chat_id .. "&photo="..photo.."&caption=".. URL.escape(Name).."&reply_to_message_id="..msgg.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
-if text == '•━═━═━═『ᴍᴀᴛʀɪx』═━═━═━•' then
-video = "https://t.me/YY_VP/1338"
-local T =[[
-℘︙ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ sᴏᴜʀᴄᴇ ᴍᴀᴛʀɪx
-]]
-keyboard = {} 
-keyboard.inline_keyboard = {
-{
-{text = '‹ 𝐒𝐮𝐩𝐩𝐨𝐫𝐭 𝐌𝐚𝐭𝐫𝐢𝐱 ›', url = "https://t.me/matrix205"}
-},
-}
-local msgg = msg_id/2097152/0.5
-https.request("https://api.telegram.org/bot"..Token.."/sendvideo?chat_id=" .. msg_chat_id .. "&video="..video.."&caption=".. URL.escape(T).."&reply_to_message_id="..msgg.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
-end
 if text == 'العاب' or text == 'الالعاب' then
 photo = "https://t.me/swry00/50"
 local T =[[
@@ -11034,7 +11020,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '- 𝙎𝙊𝙐𝙍𝘾𝙀 𝙈𝘼𝙏𝙍𝙄𝙓 .', url = 't.me/YY_VP '}, 
+{text = '- 𝙎𝙊𝙐??𝘾𝙀 𝙈𝘼𝙏𝙍𝙄𝙓 .', url = 't.me/YY_VP '}, 
 },
 }
 }
