@@ -10399,17 +10399,6 @@ keyboard.inline_keyboard = {
 }
 local msgg = msg_id/2097152/0.5
 https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id=" .. msg_chat_id .. "&photo="..photo.."&caption=".. URL.escape(Name).."&reply_to_message_id="..msgg.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
-elseif text == 'بوت حذف' or text == 'حذف حسابي' or text == 'بوت الحذف' then
-photo = "https://t.me/LC6BOT"
-local Name = '℘︙بوت حذف حسابات تليجرام ♡,'
-keyboard = {} 
-keyboard.inline_keyboard = {
-{
-{text = '℘︙اضغط هنا لدخول البوت ♡,', url = "https://t.me/LC6BOT"}
-},
-}
-local msgg = msg_id/2097152/0.5
-https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id=" .. msg_chat_id .. "&photo="..photo.."&caption=".. URL.escape(Name).."&reply_to_message_id="..msgg.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
 if text == 'العاب' or text == 'الالعاب' then
 photo = "https://t.me/swry00/50"
@@ -13051,7 +13040,7 @@ db = "ملف ⌔"
 elseif Redis:get(TheMEZO.."MEZO:Add:Rd:Sudo:Audio"..v) then
 db = "اغنيه 🎵"
 elseif Redis:get(TheMEZO.."MEZO:Add:Rd:Sudo:video_note"..v) then
-db = "بصمه فيديو 🎥"
+db = "بصمه فيديو ??"
 end
 text = text..""..k.." » {"..v.."} » {"..db.."}\n"
 end
