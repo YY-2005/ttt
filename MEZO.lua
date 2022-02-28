@@ -10469,6 +10469,9 @@ https.request("https://api.telegram.org/bot"..Token.."/deleteMessage?chat_id="..
 Redis:del(TheMEZO.."youtube"..msg.sender.user_id..msg_chat_id)
 end
 if text == "يوتيوب" then
+if Redis:get(TheMEZO.."yt:lock"..msg.chat_id) then
+return sendx(msg_chat_id,msg_id,"※ اليوتيوب معطل ","md",true)
+end
 local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
